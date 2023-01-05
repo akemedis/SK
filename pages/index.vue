@@ -1,6 +1,7 @@
 <template>
-  <div>hello Rosie Nortonia Burgonia</div>
-  <slot />
+  <div>
+    <customNav />
+  </div>
 </template>
 
 <script></script>
