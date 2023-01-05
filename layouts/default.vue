@@ -1,5 +1,8 @@
 <template>
-  <div></div>
+  <div>
+    <customNav />
+    <slot />
+  </div>
 </template>
 
 <script></script>
