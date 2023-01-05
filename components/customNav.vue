@@ -10,11 +10,11 @@
                   <h2 class="text-white font-anu text-2xl text-white-100">
                     SERAJ KOTAGAMA
                   </h2>
-                  <navbutton :title="'Thoughts'" />
-                  <navbutton :title="'Essays'" />
-                  <navbutton :title="'my experience'" />
-                  <navbutton :title="'Biotechnology'" />
-                  <navbutton :title="'Consultancy'" />
+                  <navbutton :title="'Thoughts'" :link="'Thoughts'" />
+                  <navbutton :title="'Essays'" :link="'Essays'" />
+                  <navbutton :title="'Visual Diary'" :link="'VisualDiary'" />
+                  <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
+                  <navbutton :title="'Consultancy'" :link="'Consultancy'" />
                 </div>
               </div>
             </div>
@@ -36,11 +36,11 @@
             >
               SERAJ KOTAGAMA
             </h2>
-            <navbutton :title="'Thoughts'" />
-            <navbutton :title="'Essays'" />
-            <navbutton :title="'my experience'" />
-            <navbutton :title="'Biotechnology'" />
-            <navbutton :title="'Consultancy'" />
+            <navbutton :title="'Thoughts'" :link="'Thoughts'" />
+            <navbutton :title="'Essays'" :link="'Essays'" />
+            <navbutton :title="'Visual Diary'" :link="'VisualDiary'" />
+            <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
+            <navbutton :title="'Consultancy'" :link="'Consultancy'" />
           </div>
         </div>
       </nav>

@@ -1,6 +1,6 @@
 <template>
-  <a
-    href="{{link}}"
+  <NuxtLink
+    v-bind:to="link"
     class="
       text-gray-300
       hover:underline
@@ -16,7 +16,7 @@
       font-medium
       move
     "
-    >{{ title }}</a
+    >{{ title }}</NuxtLink
   >
 </template>
 
