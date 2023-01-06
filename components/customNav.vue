@@ -47,6 +47,7 @@
               <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
               <navbutton :title="'Consultancy'" :link="'Consultancy'" />
               <navbutton :title="'login'" :link="'/authenticate'" />
+              <navbutton :title="'account'" :link="'/account'" />
             </div>
           </div>
         </nav>
