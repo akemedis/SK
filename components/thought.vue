@@ -1,6 +1,18 @@
 <template>
-  <div class="text-gray-300 border-solid border-purple-500 m-100">
-    <h1>fug</h1>
+  <div
+    class="
+      grid
+      flex-grow
+      h-32
+      card
+      bg-base-300
+      rounded-box
+      place-items-center
+      border-4
+    "
+  >
+    <h1>{{ content }}</h1>
+    <h1>{{ dates }}</h1>
   </div>
 </template>
 
@@ -8,7 +20,7 @@
 import { defineProps } from 'vue';
 const props = defineProps({
   content: String,
-  date: String,
+  dates: String,
 });
 </script>
 
