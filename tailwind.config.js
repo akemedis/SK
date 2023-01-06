@@ -15,6 +15,7 @@ module.exports = {
         technica: "'Ubuntu', sans",
         signature: "'Akronim', serif",
         anu: "'anurati', sans",
+        roboto: "'roboto', sans",
       },
     },
   },

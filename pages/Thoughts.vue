@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="flex flex-wrap justify-center">
     <thought
       v-for="item in export_data"
       :content="item.thought"
       :dates="item.date"
+      :tags="item.tags"
     />
   </div>
 </template>
@@ -21,7 +22,7 @@ async function getData() {
   try {
     const response = await supabase
       .from('Thoughts')
-      .select('content, created_at');
+      .select('content, created_at, tags');
     return response;
   } catch (error) {
     console.error(error);
@@ -29,20 +30,26 @@ async function getData() {
 }
 
 // Storing thoughts in a reactive ref array
-// let thoughts = ref([]);
-// let dates = ref([]);
-// let num_thoughts = ref(0);
-let export_data = [];
+let export_data = ref([]);
 getData().then((data) => {
   data.data.forEach((entry) => {
-    // thoughts.value.push(entry.content);
-    // dates.value.push(entry.date);
+    let dateString = entry.created_at;
+    const date = new Date(dateString);
+    const options = {
+      year: '2-digit',
+      month: '2-digit',
+      day: '2-digit',
+      timeZone: 'Australia/Sydney',
+    };
+    let tags = entry.tags.split(',');
+    const formattedDate = date.toLocaleDateString('en-AU', options);
     let item = {
       thought: entry.content,
-      date: entry.created_at,
+      date: formattedDate,
+      tags: tags,
     };
     // console.log(entry);
-    export_data.push(item);
+    export_data.value.push(item);
   });
 });
 console.log(export_data);
