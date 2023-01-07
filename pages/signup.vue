@@ -1,5 +1,8 @@
 <template>
-  <div class="flex justify-center">
+  <div
+    class="flex justify-center"
+    style="background-image: url(../assets/images/fish_concept.png)"
+  >
     <div
       class="
         flex
@@ -186,6 +189,7 @@
       </form>
     </div>
   </div>
+  <!-- <img src="../assets/images/fish_concept.png" alt="Beautiful World" /> -->
   <div class="custom-shape-divider-bottom-1673077320">
     <svg
       data-name="Layer 1"
