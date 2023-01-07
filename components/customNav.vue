@@ -8,9 +8,15 @@
               <div class="flex items-center">
                 <div class="hidden md:block">
                   <div class="ml-10 flex items-baseline space-x-4">
-                    <h2 class="text-white font-anu text-2xl text-white-100">
+                    <!-- <h2 class="text-white font-anu text-2xl text-white-100">
                       SERAJ KOTAGAMA
-                    </h2>
+                    </h2> -->
+                    <v-typical
+                      class="blink text-white font-anu text-2xl text-white-100"
+                      :steps="['', 200, 'ELON MU', 500, 'SERAJ KOTAGAMA', 1000]"
+                      :loop="1"
+                      :wrapper="'h2'"
+                    ></v-typical>
                     <navbutton :title="'Thoughts'" :link="'Thoughts'" />
                     <navbutton :title="'Essays'" :link="'Essays'" />
                     <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
@@ -40,7 +46,7 @@
               "
             >
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <h2
+              <!-- <h2
                 class="
                   text-white
                   font-anu
@@ -51,7 +57,13 @@
                 "
               >
                 SERAJ KOTAGAMA
-              </h2>
+              </h2> -->
+              <v-typical
+                class="blink text-white font-anu text-2xl text-white-100"
+                :steps="['', 200, 'ELON MUS', 500, 'SERAJ KOTAGAMA', 1000]"
+                :loop="1"
+                :wrapper="'h2'"
+              ></v-typical>
               <navbutton :title="'Thoughts'" :link="'Thoughts'" />
               <navbutton :title="'Essays'" :link="'Essays'" />
               <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
@@ -67,6 +79,8 @@
   </div>
 </template>
 
-<script></script>
+<script setup>
+import VTypical from 'vue-typical';
+</script>
 
 <style></style>
