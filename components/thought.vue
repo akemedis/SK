@@ -28,7 +28,7 @@
     "
   >
     <div class="grid justify-items-center bg-gray-100 rounded-2xl p-4">
-      <h1 class="font-roboto-500 font-medium text-lg">{{ content }}</h1>
+      <h1 class="font-roboto-500 font-medium text-lg tlt">{{ content }}</h1>
       <h1 class="font-roboto-500 font-light p-1">{{ dates }}</h1>
       <div class="flex flex-wrap">
         <tag v-for="tag in tags" :tag="tag" />
@@ -39,12 +39,22 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import $ from 'jquery';
 const props = defineProps({
   content: String,
   dates: String,
   tags: Array,
 });
 console.log(props.tags[0]);
+
+// animations
+$(function () {
+  $('.tlt').textillate({
+    in: {
+      effect: 'rollIn',
+    },
+  });
+});
 </script>
 
 <style></style>
