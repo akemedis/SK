@@ -224,63 +224,35 @@ const email = ref(null);
 const password = ref(null);
 var result = null;
 
+// defining the sign_up function
 function sign_up(name, email, password) {
   if (name.value !== '' && email.value !== '' && password.value !== '') {
-    // console.log(email.value, name.value, password.value);
-    // signing up user
     const signingUp = async () => {
-      const { data, error } = await supabase.auth.signUp({
-        email: email.value,
-        password: password.value,
-        raw_user_meta_data: {
-          username: name.value,
-        },
-      }).then((result) => {
-        if (result.error) {
-          alert(result.error.error_description || result.error.message);
-          return
-        } else {
-          console.log(result.data)
-          result = result.data
-          alert('I blew you over an email, check it and confirm, then you can log in');
-          return
-        }
-      }
-    }
+      console.log('lvl1');
+      const { data, error } = await supabase.auth
+        .signUp({
+          email: email.value,
+          password: password.value,
+        })
+        .then((result) => {
+          if (result.error) {
+            alert(result.error.error_description || result.error.message);
+            return;
+          } else {
+            console.log(result.data);
+            result = result.data;
+            alert(
+              'I blew you over an email, check it and confirm, then you can log in'
+            );
+            return;
+          }
+        });
+    };
+    signingUp();
   } else {
     alert('You gotta fill out ALL the fields lol');
   }
 }
-// function sign_up(name, email, password) {
-//   if (name.value !== '' && email.value !== '' && password.value !== '') {
-//     console.log('base');
-//     const signingUp = async () => {
-//       console.log('lvl1');
-//       try {
-//         console.log('in');
-//         const { data, error } = await supabase.auth
-//           .signUp({
-//             email: email.value,
-//             password: password.value,
-//           })
-//           .then((result) => {
-//             if (result.error) {
-//               alert(error.error_description || error.message);
-//             } else {
-//               console.log(result.data);
-//               alert(
-//                 'I blew you over an email, check it and confirm, then you can log in'
-//               );
-//             }
-//           });
-//       } catch (error) {
-//         alert(error.message);
-//       }
-//     };
-//   } else {
-//     alert('You gotta fill out ALL the fields lol');
-//   }
-// }
 </script>
 
 <style>
