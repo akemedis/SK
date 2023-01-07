@@ -1,194 +1,201 @@
 <template>
-  <div id="back" class="min-h-screen">
-    <div class="flex justify-center">
-      <div
+  <div class="flex justify-center">
+    <div
+      class="
+        flex
+        justify-center
+        mt-10
+        mb-10
+        bg-gradient-to-b
+        from-purple-600
+        via-blue-700
+        to-cyan-600
+        max-w-fit
+        rounded-2xl
+        shadow-md shadow-gray-300
+        hover:shadow-2xl hover:shadow-blue-200
+        duration-200
+        sm:scale-80 sm:invisible
+      "
+    >
+      <form
         class="
-          flex
-          justify-center
-          mt-10
-          bg-gradient-to-b
-          from-purple-600
-          via-blue-700
-          to-cyan-600
-          max-w-fit
+          flex flex-wrap
+          justify-center justify-self-center
+          m-1
+          p-7
           rounded-2xl
-          shadow-md shadow-gray-300
-          hover:shadow-2xl hover:shadow-blue-200
-          duration-200
+          max-w-sm
+          bg-gray-100
+          visible
+          sm:visible sm:bg-white sm:p-1
         "
+        id="sign"
       >
-        <form
+        <div
           class="
-            flex flex-wrap
-            justify-center justify-self-center
-            border
-            m-1
-            p-7
-            rounded-2xl
-            max-w-sm
-            bg-gray-100
+            block
+            p-2
+            mb-8
+            font-anu font-medium
+            text-2xl
+            bg-gradient-to-r
+            from-purple-600
+            via-blue-700
+            to-cyan-600
+            bg-clip-text
           "
         >
-          <div
-            class="
-              block
-              p-2
-              mb-8
-              font-anu font-medium
-              text-2xl
-              bg-gradient-to-r
-              from-purple-600
-              via-blue-700
-              to-cyan-600
-              bg-clip-text
-            "
-          >
-            <h1 class="text-transparent">SHAPE &nbsp THE &nbsp FUTURE</h1>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label
-                class="
-                  block
-                  text-gray-500
-                  font-bold
-                  md:text-right
-                  mb-1
-                  md:mb-0
-                  pr-4
-                "
-                for="inline-full-name"
-                placeholder="fullname"
-              >
-                Full Name
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input
-                class="
-                  bg-gray-200
-                  appearance-none
-                  border-2 border-gray-200
-                  rounded
-                  w-full
-                  py-2
-                  px-4
-                  text-gray-700
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-blue-500
-                  font-roboto font-medium
-                "
-                id="inline-full-name"
-                type="text"
-                placeholder="Jane Doe"
-              />
-            </div>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label
-                class="
-                  block
-                  text-gray-500
-                  font-bold
-                  md:text-right
-                  mb-1
-                  md:mb-0
-                  pr-4
-                "
-                for="inline-full-name"
-                placeholder="fullname"
-              >
-                Email
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input
-                class="
-                  bg-gray-200
-                  appearance-none
-                  border-2 border-gray-200
-                  rounded
-                  w-full
-                  py-2
-                  px-4
-                  text-gray-700
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-blue-500
-                  font-roboto font-medium
-                "
-                id="inline-full-name"
-                type="text"
-                placeholder="janedoe@gmail.com"
-              />
-            </div>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label
-                class="
-                  block
-                  text-gray-500
-                  font-bold
-                  md:text-right
-                  mb-1
-                  md:mb-0
-                  pr-4
-                "
-                for="inline-password"
-              >
-                Password
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input
-                class="
-                  bg-gray-200
-                  appearance-none
-                  border-2 border-gray-200
-                  rounded
-                  w-full
-                  py-2
-                  px-4
-                  text-gray-700
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-blue-500
-                "
-                id="inline-password"
-                type="password"
-                placeholder="******************"
-              />
-            </div>
-          </div>
-          <div
-            class="
-              block
-              border border-2 border-gray-300
-              rounded-lg
-              p-1
-              font-technica
-              shadow-md shadow-gray-200
-              m-8
-              mt-4
-              mb-4
-              hover:scale-110
-              hover:shadow-xl
-              hover:shadow-blue-200
-              hover:border-blue-400
-              duration-200
-            "
-          >
-            <button
-              class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
+          <h1 class="text-transparent">SHAPE &nbsp THE &nbsp FUTURE</h1>
+        </div>
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label
+              class="
+                block
+                text-gray-500
+                font-bold
+                md:text-right
+                mb-1
+                md:mb-0
+                pr-4
+              "
+              for="inline-full-name"
+              placeholder="fullname"
             >
-              Join the ride
-            </button>
+              Full Name
+            </label>
           </div>
-        </form>
-      </div>
+          <div class="md:w-2/3">
+            <input
+              class="
+                bg-gray-200
+                appearance-none
+                border-2 border-gray-200
+                rounded
+                w-full
+                py-2
+                px-4
+                text-gray-700
+                leading-tight
+                focus:outline-none focus:bg-white focus:border-blue-500
+                font-roboto font-medium
+              "
+              id="inline-full-name"
+              type="text"
+              placeholder="Jane Doe"
+              ref="name"
+            />
+          </div>
+        </div>
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label
+              class="
+                block
+                text-gray-500
+                font-bold
+                md:text-right
+                mb-1
+                md:mb-0
+                pr-4
+              "
+              for="inline-full-name"
+              placeholder="fullname"
+            >
+              Email
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input
+              class="
+                bg-gray-200
+                appearance-none
+                border-2 border-gray-200
+                rounded
+                w-full
+                py-2
+                px-4
+                text-gray-700
+                leading-tight
+                focus:outline-none focus:bg-white focus:border-blue-500
+                font-roboto font-medium
+              "
+              id="inline-full-name"
+              type="text"
+              placeholder="janedoe@gmail.com"
+              ref="email"
+            />
+          </div>
+        </div>
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label
+              class="
+                block
+                text-gray-500
+                font-bold
+                md:text-right
+                mb-1
+                md:mb-0
+                pr-4
+              "
+              for="inline-password"
+            >
+              Password
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input
+              class="
+                bg-gray-200
+                appearance-none
+                border-2 border-gray-200
+                rounded
+                w-full
+                py-2
+                px-4
+                text-gray-700
+                leading-tight
+                focus:outline-none focus:bg-white focus:border-blue-500
+              "
+              id="inline-password"
+              type="password"
+              placeholder="******************"
+              ref="password"
+            />
+          </div>
+        </div>
+        <div
+          class="
+            block
+            border border-2 border-gray-300
+            rounded-lg
+            p-1
+            font-technica
+            shadow-md shadow-gray-200
+            m-8
+            mt-4
+            mb-4
+            hover:scale-110
+            hover:shadow-xl
+            hover:shadow-blue-200
+            hover:border-blue-400
+            duration-200
+          "
+        >
+          <button
+            class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
+            @click="log(name)"
+            type="button"
+          >
+            Join the ride
+          </button>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="custom-shape-divider-bottom-1673077320">
+  <!-- <div class="custom-shape-divider-bottom-1673077320 xsm:hidden sm:hidden">
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
@@ -200,7 +207,7 @@
         class="shape-fill"
       ></path>
     </svg>
-  </div>
+  </div> -->
 </template>
 
 <script setup>
@@ -211,7 +218,16 @@ const url = config.SUPABASE_URL;
 const key = config.SUPABASE_KEY;
 const supabase = createClient(url, key);
 
-// signinng up user
+// setting data from form
+const name = ref(null);
+const email = ref(null);
+const password = ref(null);
+
+function sign_in(ent) {
+  console.log(ent.value);
+}
+
+// signing up user
 const { data, error } = await supabase.auth.signUp({
   email: 'example@email.com',
   password: 'example-password',
@@ -240,8 +256,8 @@ const { data, error } = await supabase.auth.signUp({
   fill: #2563eb;
 }
 
-#back {
+/* #back {
   background-image: url(../assets/images/fish_concept.png);
   background-size: cover;
-}
+} */
 </style>

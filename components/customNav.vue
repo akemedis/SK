@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <div class="min-h-full">
+      <div class="min-h-full max-w-full">
         <nav class="bg-gradient-to-r from-blue-700 to-cyan-600">
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex pt-2 pb-2 items-center justify-between">
@@ -13,12 +13,12 @@
                     </h2>
                     <navbutton :title="'Thoughts'" :link="'Thoughts'" />
                     <navbutton :title="'Essays'" :link="'Essays'" />
-                    <navbutton :title="'Visual Diary'" :link="'VisualDiary'" />
+                    <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
                     <navbutton
                       :title="'Biotechnology'"
                       :link="'Biotechnology'"
                     />
-                    <navbutton :title="'Consultancy'" :link="'Consultancy'" />
+                    <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
                     <navbutton :title="'Login'" :link="'/authenticate'" />
                     <navbutton :title="'Signup'" :link="'/signup'" />
                   </div>
@@ -54,9 +54,9 @@
               </h2>
               <navbutton :title="'Thoughts'" :link="'Thoughts'" />
               <navbutton :title="'Essays'" :link="'Essays'" />
-              <navbutton :title="'Visual Diary'" :link="'VisualDiary'" />
+              <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
               <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
-              <navbutton :title="'Consultancy'" :link="'Consultancy'" />
+              <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
               <navbutton :title="'Login'" :link="'/authenticate'" />
               <navbutton :title="'Signup'" :link="'/signup'" />
             </div>
