@@ -14,7 +14,12 @@
       rounded-2xl
       max-w-prose
       shadow-lg
-      hover:scale-110 hover:shadow-xl
+      hover:scale-110
+      hover:shadow-xl
+      hover:m-9
+      hover:scale-110
+      hover:shadow-xl
+      hover:m-9
       duration-200
       bg-gradient-to-r
       from-purple-300

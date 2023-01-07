@@ -22,7 +22,8 @@ async function getData() {
   try {
     const response = await supabase
       .from('Thoughts')
-      .select('content, created_at, tags');
+      .select('content, created_at, tags')
+      .order('id', { ascending: false });
     return response;
   } catch (error) {
     console.error(error);
