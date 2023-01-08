@@ -1,6 +1,6 @@
 <template>
-  <nav>
-    <header>
+  <header>
+    <nav>
       <div
         class="
           flex flex-wrap
@@ -13,15 +13,8 @@
       >
         <v-typical
           class="blink text-white font-anu text-2xl text-white-100"
-          :steps="[
-            '',
-            200,
-            'FUTURE PM OF SRILANKA',
-            500,
-            'SERAJ KOTAGAMA',
-            1000,
-          ]"
-          :loop="1"
+          :steps="['', 200, 'ENVISION', 500, 'BUILD', 500, 'HOLY SHIT', 1000]"
+          :loop="infinity"
           :wrapper="'h2'"
         ></v-typical>
         <navbutton :title="'Thoughts'" :link="'Thoughts'" />
@@ -32,8 +25,8 @@
         <navbutton :title="'Login'" :link="'/authenticate'" />
         <navbutton :title="'Signup'" :link="'/signup'" />
       </div>
-    </header>
-  </nav>
+    </nav>
+  </header>
 </template>
 
 <script setup>
