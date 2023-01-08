@@ -13,7 +13,14 @@
       >
         <v-typical
           class="blink text-white font-anu text-2xl text-white-100"
-          :steps="['', 200, 'ELON MU', 500, 'SERAJ KOTAGAMA', 1000]"
+          :steps="[
+            '',
+            200,
+            'FUTURE PM OF SRILANKA',
+            500,
+            'SERAJ KOTAGAMA',
+            1000,
+          ]"
           :loop="1"
           :wrapper="'h2'"
         ></v-typical>
