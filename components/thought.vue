@@ -25,6 +25,7 @@
       from-purple-300
       via-blue-500
       to-cyan-500
+      max-w-sm
     "
   >
     <div class="grid justify-items-center bg-gray-100 rounded-2xl p-4">
