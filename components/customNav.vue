@@ -6,9 +6,11 @@
           flex flex-wrap
           bg-gradient-to-r
           from-blue-700
-          to-cyan-600
+          via-cyan-600
+          to-emerald-600
           p-4
           justify-center
+          animate-gradient-x
         "
       >
         <client-only placeholder="">
