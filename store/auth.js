@@ -36,7 +36,7 @@ export const authStore = defineStore('auth', {
     },
     async signInWithEmail(email, password) {
       try {
-        const { data } = await supabase.auth.signInWithPassword({
+        const { data } = await this.ensureSupabase.auth.signInWithPassword({
           email,
           password,
         });
