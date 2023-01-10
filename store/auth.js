@@ -7,24 +7,24 @@ export const authStore = defineStore('auth', {
     supabase: {},
   }),
   getters: {
-    updateSupabase() {
-      if (typeof supabase == 'undefined') {
+    ensureSupabase() {
+      if (typeof this.supabase == 'undefined') {
         // creating anon user
         const config = useRuntimeConfig();
         const url = config.SUPABASE_URL;
         const key = config.SUPABASE_KEY;
-        const supabase = createClient(url, key);
-        supabase = supabase;
-        // console.log(authStore.supabase);
+        const client = createClient(url, key);
+        this.supabase = client;
+        console.log('ffff');
+        return this.supabase;
       }
     },
   },
   actions: {
-    createClient() {},
     async get_user() {
       const {
         data: { user },
-      } = await supabase.auth.getUser();
+      } = await this.supabase.auth.getUser();
       console.log(user);
     },
     async log_out() {

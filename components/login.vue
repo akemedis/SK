@@ -160,7 +160,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="authStore.signInWithEmail(email, password, supabase)"
+            @click="authStore.signInWithEmail(email, password)"
             type="button"
           >
             Authenticate
@@ -186,7 +186,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="authStore.get_user(supabase)"
+            @click="authStore.get_user()"
             type="button"
           >
             Get user
@@ -212,7 +212,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="authStore.log_out(supabase)"
+            @click="authStore.log_out()"
             type="button"
           >
             Log out
@@ -228,16 +228,7 @@ import VTypical from 'vue-typical';
 import { createClient } from '@supabase/supabase-js';
 import auth from '~/composables/auth';
 import { authStore } from '../store/auth.js';
-
-if (typeof authStore.supabase == 'undefined') {
-  // creating anon user
-  const config = useRuntimeConfig();
-  const url = config.SUPABASE_URL;
-  const key = config.SUPABASE_KEY;
-  const supabase = createClient(url, key);
-  authStore.supabase = supabase;
-  // console.log(authStore.supabase);
-}
+console.log(authStore.ensureSupabase);
 
 // Logging in
 var email = '';
