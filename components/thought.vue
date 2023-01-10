@@ -1,7 +1,6 @@
 <template>
   <div
     class="
-      grid
       flex
       self-center
       card

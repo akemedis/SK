@@ -33,7 +33,7 @@
         <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
         <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
         <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
-        <navbutton :title="'Login'" :link="'/authenticate'" />
+        <navbutton :title="'Login'" :link="'/login'" />
         <navbutton :title="'Signup'" :link="'/signup'" />
       </div>
     </nav>
