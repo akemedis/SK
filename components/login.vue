@@ -229,7 +229,7 @@ import { createClient } from '@supabase/supabase-js';
 import auth from '~/composables/auth';
 import { authStore } from '../store/auth.js';
 
-authStore_instance = authStore();
+const authStore_instance = authStore();
 
 // Logging in
 var email = '';
