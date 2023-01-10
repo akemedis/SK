@@ -10,6 +10,11 @@
 </template>
 
 <script setup>
+// middleware
+definePageMeta({
+  middleware: ['auth'],
+});
+
 // setup
 import { createClient } from '@supabase/supabase-js';
 const config = useRuntimeConfig();

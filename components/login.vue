@@ -160,10 +160,62 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="signInWithEmail(email, password)"
+            @click="auth.signInWithEmail(email, password, supabase)"
             type="button"
           >
             Authenticate
+          </button>
+        </div>
+        <div
+          class="
+            block
+            border border-2 border-gray-300
+            rounded-lg
+            p-1
+            font-technica
+            shadow-md shadow-gray-200
+            m-8
+            mt-4
+            mb-4
+            hover:scale-110
+            hover:shadow-xl
+            hover:shadow-blue-200
+            hover:border-blue-400
+            duration-200
+          "
+        >
+          <button
+            class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
+            @click="auth.get_user(supabase)"
+            type="button"
+          >
+            Get user
+          </button>
+        </div>
+        <div
+          class="
+            block
+            border border-2 border-gray-300
+            rounded-lg
+            p-1
+            font-technica
+            shadow-md shadow-gray-200
+            m-8
+            mt-4
+            mb-4
+            hover:scale-110
+            hover:shadow-xl
+            hover:shadow-blue-200
+            hover:border-blue-400
+            duration-200
+          "
+        >
+          <button
+            class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
+            @click="auth.log_out(supabase)"
+            type="button"
+          >
+            Log out
           </button>
         </div>
       </form>
@@ -174,6 +226,8 @@
 <script setup>
 import VTypical from 'vue-typical';
 import { createClient } from '@supabase/supabase-js';
+import auth from '~/composables/auth';
+
 // creating anon user
 const config = useRuntimeConfig();
 const url = config.SUPABASE_URL;
@@ -183,18 +237,6 @@ const supabase = createClient(url, key);
 // Logging in
 var email = '';
 var password = '';
-
-async function signInWithEmail(email, password) {
-  try {
-    const { data } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    console.log('Logged in user:', data);
-  } catch (error) {
-    console.error('Error logging in:', error);
-  }
-}
 
 // random greeting generation
 const greetings = [
@@ -213,7 +255,6 @@ const greetings = [
   "We've been awaiting thy return, welcome back dear traveler",
   'Welcome back from thy journey, the banquet table is laid in thy honor',
   "Thou hast returned! 'Tis good to see thee. Welcome back",
-  'The prodigal has returned! Welcome back, all is forgiven.',
 ];
 function set_greeting() {
   random_greeting = greetings[Math.floor(Math.random() * greetings.length)];

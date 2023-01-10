@@ -35,6 +35,7 @@
         <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
         <navbutton :title="'Login'" :link="'/login'" />
         <navbutton :title="'Signup'" :link="'/signup'" />
+        <navbutton v-if="!user == null" :title="'Logout'" :link="'/logout'" />
       </div>
     </nav>
   </header>
@@ -42,6 +43,7 @@
 
 <script setup>
 import VTypical from 'vue-typical';
+import auth from '~/composables/auth';
 </script>
 
 <style></style>
