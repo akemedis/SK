@@ -37,7 +37,7 @@
             block
             p-2
             mb-8
-            font-anu font-medium
+            font-medium
             text-2xl
             bg-gradient-to-r
             from-purple-600
@@ -46,7 +46,20 @@
             bg-clip-text
           "
         >
-          <h1 class="text-transparent">WELCOME BACK MAN</h1>
+          <client-only placeholder="">
+            <v-typical
+              class="
+                blink
+                text-white
+                font-techinca
+                text-2xl text-white-100 text-transparent
+              "
+              :steps="['', 200, random_greeting, 1000]"
+              :loop="1"
+              :wrapper="'h2'"
+            ></v-typical>
+          </client-only>
+          <!-- <h1 class="text-transparent">WELCOME BACK</h1> -->
         </div>
         <div class="md:flex md:items-center mb-6">
           <div class="md:w-1/3">
@@ -197,6 +210,32 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import VTypical from 'vue-typical';
+
+// random greeting generation
+const greetings = [
+  'Hark! Thou art returned! Welcome back, fair traveler.',
+  'All hail! The prodigal has returned. Welcome home.',
+  "Verily, 'tis good to see thee back amongst us. Welcome home, dear friend.",
+  'Prithee, let us raise a goblet to thy safe return. Welcome back, brave adventurer.',
+  'Hark! The wanderer has returned. Welcome back to thy rightful place.',
+  "Thou art back! 'Tis a pleasure to have thee amongst us once more. Welcome!",
+  'Welcome home, fair adventurer! Thy tales shall be heard with glee',
+  'The hearth fire burns bright with thy return. Welcome back dear friend',
+  'The kingdom rejoices, for the wanderer has returned. Welcome back',
+  'Behold! Our hero has returned. Welcome back to thy stronghold',
+  'Welcome home! Thy presence graces us once more',
+  "We've been awaiting thy return, welcome back dear traveler",
+  'Welcome back from thy journey, the banquet table is laid in thy honor',
+  "Thou hast returned! 'Tis good to see thee. Welcome back",
+  'The prodigal has returned! Welcome back, all is forgiven.',
+];
+function set_greeting() {
+  random_greeting = greetings[Math.floor(Math.random() * greetings.length)];
+}
+var random_greeting = ref('');
+set_greeting();
+</script>
 
 <style></style>
