@@ -44,6 +44,7 @@
             via-blue-700
             to-cyan-600
             bg-clip-text
+            min-w-full
           "
         >
           <client-only placeholder="">
@@ -74,7 +75,7 @@
                 pr-4
               "
               for="inline-full-name"
-              placeholder="fullname"
+              placeholder="Email"
             >
               Email
             </label>
@@ -96,8 +97,8 @@
               "
               id="inline-full-name"
               type="text"
-              placeholder="janedoe@gmail.com"
-              ref="email"
+              placeholder="you@yourmail.org"
+              v-model="email"
             />
           </div>
         </div>
@@ -135,7 +136,7 @@
               id="inline-password"
               type="password"
               placeholder="******************"
-              ref="password"
+              v-model="password"
             />
           </div>
         </div>
@@ -159,7 +160,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="sign_up(name, email, password)"
+            @click="signInWithEmail(email, password)"
             type="button"
           >
             Authenticate
@@ -173,26 +174,32 @@
 <script setup>
 import VTypical from 'vue-typical';
 import { createClient } from '@supabase/supabase-js';
-
 // creating anon user
-if (!supabase) {
-  const config = useRuntimeConfig();
-  const url = config.SUPABASE_URL;
-  const key = config.SUPABASE_KEY;
-  const supabase = createClient(url, key);
-}
+const config = useRuntimeConfig();
+const url = config.SUPABASE_URL;
+const key = config.SUPABASE_KEY;
+const supabase = createClient(url, key);
 
-// Signing in
-async function signInWithEmail() {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: 'example@email.com',
-    password: 'example-password',
-  });
+// Logging in
+var email = '';
+var password = '';
+
+async function signInWithEmail(email, password) {
+  try {
+    const { data } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    console.log('Logged in user:', data);
+  } catch (error) {
+    console.error('Error logging in:', error);
+  }
 }
 
 // random greeting generation
 const greetings = [
   'Hark! Thou art returned! Welcome back, fair traveler.',
+  'Avatar 2 was perfection.',
   'All hail! The prodigal has returned. Welcome home.',
   "Verily, 'tis good to see thee back amongst us. Welcome home, dear friend.",
   'Prithee, let us raise a goblet to thy safe return. Welcome back, brave adventurer.',
