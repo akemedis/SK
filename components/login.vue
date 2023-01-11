@@ -163,7 +163,7 @@
             @click="authStore_instance.signInWithEmail(email, password)"
             type="button"
           >
-            Authenticate
+            Authenticate {{ useAuthStore.test }}
           </button>
         </div>
         <div
@@ -225,12 +225,12 @@
 
 <script setup>
 import VTypical from 'vue-typical';
-import { createClient } from '@supabase/supabase-js';
-import auth from '~/composables/auth';
-import { authStore } from '../store/auth.js';
+import { useAuthStore } from '~/store/auth';
+const authStore = useAuthStore();
+// useAuthStore.test = 'dsdsdsds';
+// useAuthStore.supabase = $supabase;
 
-const authStore_instance = authStore();
-
+console.log(useAuthStore.supabase, useAuthStore.test, useAuthStore.test2);
 // Logging in
 var email = '';
 var password = '';

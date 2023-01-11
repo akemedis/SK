@@ -1,23 +1,26 @@
 import { defineStore } from 'pinia';
-import { createClient } from '@supabase/supabase-js';
 
-export const authStore = defineStore('auth', {
-  state: () => ({
-    user: {},
-    supabase: {},
-  }),
-  getters: {
-    ensureSupabase() {
-      if (typeof this.supabase == 'undefined') {
-        // creating anon user
-        const config = useRuntimeConfig();
-        const url = config.SUPABASE_URL;
-        const key = config.SUPABASE_KEY;
-        const client = createClient(url, key);
-        this.supabase = client;
-        console.log('ffff');
-        return this.supabase;
-      }
+export const useAuthStore = defineStore('auth', {
+  state: () => {
+    return {
+      user: {},
+      supabase: {},
+      test: 345,
+      test2: 'fuck this',
+    };
+  },
+  mutations: {
+    SET_SUPABASE: (state, supabase) => {
+      state.supabase = supabase;
+    },
+  },
+  hooks: {
+    create(store, { $supabase }) {
+      store.commit('SET_SUPABASE', $supabase);
+      console.log(
+        'this is the store speaking, client set as supabase',
+        store.state.supabase
+      );
     },
   },
   actions: {
@@ -29,9 +32,11 @@ export const authStore = defineStore('auth', {
     },
     async log_out() {
       const { error } = await supabase.auth.signOut();
-      console.log(error);
       if (!error) {
         console.log('logged out');
+      }
+      if (error) {
+        console.log(error);
       }
     },
     async signInWithEmail(email, password) {
