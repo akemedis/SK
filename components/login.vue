@@ -225,12 +225,11 @@
 
 <script setup>
 import VTypical from 'vue-typical';
-import { useAuthStore } from '~/store/auth';
-const authStore = useAuthStore();
-// useAuthStore.test = 'dsdsdsds';
-// useAuthStore.supabase = $supabase;
+import { useAuthStore } from '@/store/authStore';
+const store = useAuthStore();
+console.log(store.name);
+store.name = 'jaime';
 
-console.log(useAuthStore.supabase, useAuthStore.test, useAuthStore.test2);
 // Logging in
 var email = '';
 var password = '';
