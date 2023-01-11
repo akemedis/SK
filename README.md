@@ -1,3 +1,3 @@
 # SK
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/nuxt-starter-afzdz8)
+This is my personal website built with Nuxt3, Pinia, and Tailwindcss.
