@@ -160,9 +160,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="
-              useAuth.signInWithEmail(email, password, authStore.supabase)
-            "
+            @click="signInWithEmail(email, password, $supabase)"
             type="button"
           >
             Authenticate
@@ -188,7 +186,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="useAuth.get_user(authStore.supabase)"
+            @click="get_user($supabase)"
             type="button"
           >
             Get user
@@ -214,7 +212,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="useAuth.log_out(authStore.supabase)"
+            @click="log_out($supabase)"
             type="button"
           >
             Log out
@@ -231,10 +229,14 @@ import VTypical from 'vue-typical';
 import { useAuthStore } from '@/store/authStore';
 import { useAuth } from '~/composables/useAuth';
 
+// unpacking initialised supabase plugin
+const { $supabase } = useNuxtApp();
+
 // Accessing store
 const authStore = useAuthStore();
 
-// auth stuff
+// unpacking auth functions
+const { get_user, log_out, signInWithEmail } = useAuth();
 
 // Logging in
 var email = '';
