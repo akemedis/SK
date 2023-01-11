@@ -160,7 +160,9 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="auth.signInWithEmail(email, password, authStore.supabase)"
+            @click="
+              useAuth.signInWithEmail(email, password, authStore.supabase)
+            "
             type="button"
           >
             Authenticate
@@ -186,7 +188,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="auth.get_user(authStore.supabase)"
+            @click="useAuth.get_user(authStore.supabase)"
             type="button"
           >
             Get user
@@ -212,7 +214,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="auth.log_out(authStore.supabase)"
+            @click="useAuth.log_out(authStore.supabase)"
             type="button"
           >
             Log out
@@ -233,7 +235,6 @@ import { useAuth } from '~/composables/useAuth';
 const authStore = useAuthStore();
 
 // auth stuff
-const auth = useAuth(authStore.supabase);
 
 // Logging in
 var email = '';

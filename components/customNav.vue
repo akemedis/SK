@@ -43,7 +43,6 @@
 
 <script setup>
 import VTypical from 'vue-typical';
-import auth from '~/composables/auth';
 </script>
 
 <style></style>

@@ -1,4 +1,4 @@
-const useAuth = (supabase) => {
+export const useAuth = () => {
   return {
     async get_user(supabase) {
       const {
@@ -26,4 +26,3 @@ const useAuth = (supabase) => {
     },
   };
 };
-export default useAuth;
