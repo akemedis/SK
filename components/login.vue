@@ -227,8 +227,6 @@
 import VTypical from 'vue-typical';
 import { useAuthStore } from '@/store/authStore';
 const store = useAuthStore();
-console.log(store.name);
-store.name = 'jaime';
 
 // Logging in
 var email = '';

@@ -211,11 +211,6 @@
 </template>
 
 <script setup>
-// messing about
-import { useAuthStore } from '@/store/authStore';
-const store = useAuthStore();
-console.log(store.name);
-
 // setting data from form
 const name = ref(null);
 const email = ref(null);
