@@ -160,10 +160,10 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="authStore_instance.signInWithEmail(email, password)"
+            @click="auth.signInWithEmail(email, password, authStore.supabase)"
             type="button"
           >
-            Authenticate {{ useAuthStore.test }}
+            Authenticate
           </button>
         </div>
         <div
@@ -186,7 +186,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="authStore_instance.get_user()"
+            @click="auth.get_user(authStore.supabase)"
             type="button"
           >
             Get user
@@ -212,7 +212,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="authStore_instance.log_out()"
+            @click="auth.log_out(authStore.supabase)"
             type="button"
           >
             Log out
@@ -224,9 +224,16 @@
 </template>
 
 <script setup>
+// Imports
 import VTypical from 'vue-typical';
 import { useAuthStore } from '@/store/authStore';
-const store = useAuthStore();
+import { useAuth } from '~/composables/useAuth';
+
+// Accessing store
+const authStore = useAuthStore();
+
+// auth stuff
+const auth = useAuth(authStore.supabase);
 
 // Logging in
 var email = '';
