@@ -28,15 +28,20 @@
             :wrapper="'h2'"
           ></v-typical>
         </client-only>
-        <navbutton :title="'Thoughts'" :link="'Thoughts'" />
-        <navbutton :title="'Essays'" :link="'Essays'" />
+        <navbutton :title="'Thoughts'" :link="'/Thoughts'" />
+        <navbutton :title="'Essays'" :link="'/essays'" />
         <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
         <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
         <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
         <navbutton :title="'About'" :link="'/about'" />
         <navbutton v-if="!authStore.user" :title="'Login'" :link="'/login'" />
         <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" />
-        <navbutton v-if="authStore.user" :title="'Logout'" :link="'/logout'" />
+        <navbutton
+          v-if="authStore.user"
+          :title="'Logout'"
+          :link="'/login'"
+          @click="log_out(authStore.supabase)"
+        />
       </div>
     </nav>
   </header>
@@ -47,7 +52,7 @@ import VTypical from 'vue-typical';
 import { useAuth } from '@/composables/useAuth';
 import { useAuthStore } from '@/store/authStore';
 // unpacking auth functions
-const { get_user } = useAuth();
+const { get_user, log_out } = useAuth();
 const authStore = useAuthStore();
 </script>
 
