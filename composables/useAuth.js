@@ -7,7 +7,7 @@ export const useAuth = (supabase) => {
         data: { user },
       } = await supabase.auth.getUser();
       const authStore = useAuthStore();
-
+      authStore.user = user;
       console.log(
         user,
         authStore.user,
