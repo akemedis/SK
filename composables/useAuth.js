@@ -20,14 +20,14 @@ export const useAuth = (supabase) => {
     }
   };
   const log_out = async (supabase) => {
-    const { error } = await supabase.auth.signOut();
-    console.log(error);
-    if (!error) {
+    try {
+      const { error } = await supabase.auth.signOut();
       const authStore = useAuthStore();
-      authStore.user = {};
+      authStore.user = null;
       console.log('logged out');
+    } catch (error) {
+      console.log('Error loggin out:', error);
     }
-    return True;
   };
   const signInWithEmail = async (email, password, supabase) => {
     try {
