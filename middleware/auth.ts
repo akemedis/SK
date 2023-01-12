@@ -1,9 +1,13 @@
-export default defineNuxtRouteMiddleware((to) => {
-  const user = useSupabaseUser();
+// import { useAuthStore } from '@/store/authStore';
+import { useAuth } from '@/composables/useAuth';
 
-  if (!user.value && to.path === '/essays') {
+export default defineNuxtRouteMiddleware(async (to) => {
+  const { get_user } = useAuth();
+  const { $supabase } = useNuxtApp();
+  const user = await get_user($supabase);
+  if (!user && to.path === '/essays') {
     navigateTo('/login');
-  } else if (user.value && to.path === '/essays') {
+  } else if (user && to.path === '/essays') {
     navigateTo('/essays');
   }
 });

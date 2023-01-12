@@ -8,5 +8,6 @@ export const useAuthStore = defineStore('auth', () => {
   return {
     name,
     supabase,
+    user,
   };
 });

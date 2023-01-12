@@ -33,13 +33,10 @@
         <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
         <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
         <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
-        <navbutton :title="'Login'" :link="'/login'" />
-        <navbutton :title="'Signup'" :link="'/signup'" />
-        <navbutton
-          v-if="get_user().stored_user !== null"
-          :title="'Logout'"
-          :link="'/logout'"
-        />
+        <navbutton :title="'About'" :link="'/about'" />
+        <navbutton v-if="!authStore.user" :title="'Login'" :link="'/login'" />
+        <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" />
+        <navbutton v-if="authStore.user" :title="'Logout'" :link="'/logout'" />
       </div>
     </nav>
   </header>
@@ -48,8 +45,10 @@
 <script setup>
 import VTypical from 'vue-typical';
 import { useAuth } from '@/composables/useAuth';
+import { useAuthStore } from '@/store/authStore';
 // unpacking auth functions
 const { get_user } = useAuth();
+const authStore = useAuthStore();
 </script>
 
 <style></style>

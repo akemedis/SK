@@ -11,12 +11,10 @@ export const useAuth = (supabase) => {
         user,
         JSON.parse(JSON.stringify(authStore.user)) // this is how you unpack the proxy
       );
-      return {
-        root_user: user,
-        stored_user: JSON.parse(JSON.stringify(authStore.user)),
-      };
+      return JSON.parse(JSON.stringify(authStore.user));
     } catch (error) {
       console.error('Error fetching user:', error);
+      return;
     }
   };
   const log_out = async (supabase) => {
