@@ -160,7 +160,10 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="signInWithEmail(email, password, $supabase)"
+            @click="
+              signInWithEmail(email, password, $supabase);
+              navigateTo('/Thoughts');
+            "
             type="button"
           >
             Authenticate
