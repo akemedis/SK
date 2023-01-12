@@ -7,17 +7,13 @@ export const useAuth = (supabase) => {
         data: { user },
       } = await supabase.auth.getUser();
       const authStore = useAuthStore();
-      const stored_user = authStore.user.then(function (result) {
-        return result;
-      });
-
       console.log(
         user,
         authStore.user,
-        stored_user
-        // JSON.parse(JSON.stringify(authStore.user)) // this is how you unpack the proxy
+        JSON.parse(JSON.stringify(authStore.user)) // this is how you unpack the proxy
       );
-      return stored_user;
+
+      return user;
     } catch (error) {
       console.error('Error fetching user:', error);
       return error;
