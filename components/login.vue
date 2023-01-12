@@ -237,7 +237,7 @@ const { $supabase } = useNuxtApp();
 
 // Accessing store
 const authStore = useAuthStore();
-
+console.log('this is fyuck', authStore.user);
 // unpacking auth functions
 const { get_user, log_out, signInWithEmail } = useAuth();
 
