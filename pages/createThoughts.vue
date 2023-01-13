@@ -1,5 +1,5 @@
 <template>
-  <div>CreateThoughts</div>
+  <createThought />
 </template>
 
 <script setup>

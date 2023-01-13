@@ -26,8 +26,8 @@ const supabase = createClient(url, key);
 async function getData() {
   try {
     const response = await supabase
-      .from('Thoughts')
-      .select('content, created_at, tags')
+      .from('thoughts')
+      .select('content, created_at')
       .order('id', { ascending: false });
     return response;
   } catch (error) {
@@ -47,12 +47,12 @@ getData().then((data) => {
       day: '2-digit',
       timeZone: 'Australia/Sydney',
     };
-    let tags = entry.tags.split(',');
+    // let tags = entry.tags.split(',');
     const formattedDate = date.toLocaleDateString('en-AU', options);
     let item = {
       thought: entry.content,
       date: formattedDate,
-      tags: tags,
+      // tags: tags,
     };
     // console.log(entry);
     export_data.value.push(item);
