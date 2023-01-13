@@ -38,6 +38,11 @@
         <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" />
         <navbutton
           v-if="authStore.user"
+          :title="'Create Thoughts'"
+          :link="'/createThoughts'"
+        />
+        <navbutton
+          v-if="authStore.user"
           :title="'Logout'"
           :link="'/login'"
           @click="log_out(authStore.supabase)"

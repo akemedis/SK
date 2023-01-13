@@ -6,7 +6,10 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const user = await get_user($supabase);
   console.log('this is the user', user);
   // essays
-  if (user == null && to.path === '/essays') {
+  if (
+    (user == null && to.path === '/essays') ||
+    to.path === '/createThoughts'
+  ) {
     console.log('notuser');
     return navigateTo('/login');
   } else if (user !== null && to.path === '/essays') {
