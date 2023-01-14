@@ -1,4 +1,5 @@
-export const useDatabase = (supabase, data) => {
+export const useDatabase = async (supabase) => {
+  const fuck = 'fuck';
   const post_thought = async (supabase, content, tags) => {
     let arrayTags = tags.split(',');
     const thought_id = ref(0);
@@ -9,43 +10,36 @@ export const useDatabase = (supabase, data) => {
         .insert({
           content: content,
         })
-        .then((value) => {
-          thogh_promise = await supabase
+        .then(async (value) => {
+          thought_promise = await supabase
             .from('thoughts')
             .where({ content: content })
             .select('id')
-            .then((value) => {
+            .then(async (value) => {
               thought_id.value = value;
               // dealing with tags
               try {
-                arrayTags.forEach((tag) => {
+                for await (const tag of arrayTags) {
                   // is tag already existing, if so grab ID
                   let tag_id = null;
                   let existing_tag = await supabase
                     .from('tags')
                     .where({ tag: tag })
                     .select('id')
-                    .then((value) => {
-                      // if there is no existing tag, insert one
-                      if ((existing_tag.length = 0)) {
-                        const { error } = await supabase
+                    .then(async (value) => {
+                      // if there is no existing tag, insert one, then get ID of it
+                      if (existing_tag.length === 0) {
+                        const tag_id = await supabase
                           .from('tags')
-                          .insert({ tag: data.content })
-                          .then((value) => {
-                            // grab ID of inserted tag
-                            existing_tag = await supabase
-                              .from('tags')
-                              .where({ tag: tag })
-                              .select('id')
-                              .then((value) => {
-                                tag_id = value;
-                                // create row in join table, define relationship
-                                const { error } = await supabase
-                                  .from('thought_tag')
-                                  .insert({
-                                    thought_id: thought_id.value,
-                                    tag_id: tag_id,
-                                  });
+                          .insert({ tag: tag })
+                          .returning('id')
+                          .then(async (value) => {
+                            // create row in join table, define relationship
+                            const { error } = await supabase
+                              .from('thought_tag')
+                              .insert({
+                                thought_id: thought_id.value,
+                                tag_id: value,
                               });
                           });
                         console.log(error);
@@ -59,7 +53,7 @@ export const useDatabase = (supabase, data) => {
                           });
                       }
                     });
-                });
+                }
               } catch (error) {
                 console.error(error);
               }
@@ -108,5 +102,6 @@ export const useDatabase = (supabase, data) => {
     retrieve_thought_tag,
     format_date,
     format_tags,
+    fuck,
   };
 };

@@ -18,7 +18,7 @@ definePageMeta({
 import { useDatabase } from '~/composables/useDatabase.js';
 import { useThoughtStore } from '@/store/thoughtStore';
 const { $supabase } = useNuxtApp();
-const { retrieve_thought_tag, format_date,format_tags } = useDatabase();
+const { retrieve_thought_tag, format_date,format_tags, post_thought } = useDatabase();
 const thoughtStore = useThoughtStore()
 const thoughts = thoughtStore.thoughts.value
 

@@ -22,7 +22,7 @@
         <label
           for="message"
           class="block mb-4 text-lg font-medium text-blue-900 font-technica"
-          >Hey Seraj, what are you thinking?</label
+          >Hey Seraj, what are you thinking? {{ fuck }}</label
         >
         <textarea
           id="message"
@@ -81,7 +81,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click=""
+            @click="post_thought(content, tags)"
             type="button"
           >
             Post
@@ -93,9 +93,20 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-import { useDatabase } from '@/composables/useDatabase';
-const { post_thought } = useDatabase()
+// middleware
+definePageMeta({
+  middleware: ['auth', 'process-thoughts'],
+});
+// imports
+import { useDatabase } from '~/composables/useDatabase.js';
+import { useThoughtStore } from '@/store/thoughtStore';
+const { $supabase } = useNuxtApp();
+const { retrieve_thought_tag, format_date,format_tags, post_thought } = useDatabase();
+const thoughtStore = useThoughtStore()
+const thoughts = thoughtStore.thoughts.value
+
 </script>
+
+
 
 <style></style>
