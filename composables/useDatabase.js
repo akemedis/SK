@@ -43,9 +43,17 @@ export const useDatabase = (supabase, data) => {
     const formattedDate = date.toLocaleDateString('en-AU', options);
     return formattedDate;
   };
+  const format_tags = (unFormTags) => {
+    let tags = [];
+    unFormTags.forEach((Objtag) => {
+      tags.push(Objtag.tag);
+    });
+    return tags;
+  };
   return {
     post_thought,
     retrieve_thought_tag,
     format_date,
+    format_tags,
   };
 };
