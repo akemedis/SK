@@ -92,6 +92,9 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import { useDatabase } from '@/composables/useDatabase';
+tags = [];
+
 const props = defineProps({
   thought: String,
 });
