@@ -13,6 +13,7 @@ export const useAuth = (supabase) => {
         authStore.user,
         JSON.parse(JSON.stringify(authStore.user)) // this is how you unpack the proxy
       );
+      return JSON.parse(JSON.stringify(authStore.user));
     } catch (error) {
       console.error('Error fetching user:', error);
       return error;

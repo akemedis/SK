@@ -42,7 +42,7 @@ import VTypical from 'vue-typical';
 const props = defineProps({
   content: String,
   dates: String,
-  // tags: Array,
+  tags: Array,
 });
 console.log(props.tags[0]);
 </script>

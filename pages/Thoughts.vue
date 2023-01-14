@@ -1,10 +1,12 @@
 <template>
   <div class="flex flex-wrap justify-center">
+    {{ thoughts[0].created_at }}
     <thought
-      v-for="item in export_data"
-      :content="item.thought"
-      :dates="item.date"
-      :tags="item.tags"
+      v-if="render == true"
+      v-for="thought in thoughts"
+      :content="thought.content"
+      :date="formattedDate(thought.created_at)"
+      :tags="thought.tags"
     />
   </div>
 </template>
@@ -12,18 +14,23 @@
 <script setup>
 // middleware
 definePageMeta({
-  middleware: ['auth'],
+  middleware: ['auth', 'thoughts'],
 });
 // imports
 import { useDatabase } from '~/composables/useDatabase.js';
-
-// functions
-const { retrieve_thought_tag } = useDatabase();
-
+import { useAuthStore } from '@/store/authStore';
+const { $supabase } = useNuxtApp();
+const authStore = useAuthStore();
+const { retrieve_thought_tag, formattedDate } = useDatabase();
 // retrieving thoughts
-retrieve_thought_tag();
-
-// setup
+let thoughts = ref(Array);
+retrieve_thought_tag($supabase).then((value) => (thoughts.value = value)); // so fuckign stupid
+// watcher for conditional rendering
+let render = ref(false);
+watch(thoughts, (newValue, oldValue) => {
+  console.log(newValue, oldValue);
+  render.value = true;
+});
 
 // fetching data from supabase db, this uses an anonymous user, this is for non RLS
 // async function getData() {
