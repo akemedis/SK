@@ -1,4 +1,4 @@
-export const useDatabase = async (supabase) => {
+export const useDatabase = (supabase) => {
   const fuck = 'fuck';
   const post_thought = async (supabase, content, tags) => {
     let arrayTags = tags.split(',');
