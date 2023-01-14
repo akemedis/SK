@@ -26,6 +26,7 @@
         >
         <textarea
           id="message"
+          v-model="content"
           rows="4"
           class="
             block
@@ -41,6 +42,7 @@
           placeholder="Can't wait to here it..."
         ></textarea>
         <input
+          v-model="tags"
           type="text"
           class="
             mt-3
@@ -93,11 +95,7 @@
 <script setup>
 import { defineProps } from 'vue';
 import { useDatabase } from '@/composables/useDatabase';
-tags = [];
-
-const props = defineProps({
-  thought: String,
-});
+const { post_thought } = useDatabase()
 </script>
 
 <style></style>

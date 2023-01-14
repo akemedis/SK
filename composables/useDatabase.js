@@ -1,17 +1,70 @@
 export const useDatabase = (supabase, data) => {
-  const post_thought = async (supabase, data) => {
+  const post_thought = async (supabase, content, tags) => {
+    let arrayTags = tags.split(',');
+    const thought_id = ref(0);
+    // inserting thought
     try {
       const { error } = await supabase
         .from('thoughts')
-        .insert({ content: data.content });
-      console.log(error);
-    } catch (error) {
-      console.error(error);
-    }
-    try {
-      const { error } = await supabase
-        .from('tags')
-        .insert({ tag: data.content });
+        .insert({
+          content: content,
+        })
+        .then((value) => {
+          thogh_promise = await supabase
+            .from('thoughts')
+            .where({ content: content })
+            .select('id')
+            .then((value) => {
+              thought_id.value = value;
+              // dealing with tags
+              try {
+                arrayTags.forEach((tag) => {
+                  // is tag already existing, if so grab ID
+                  let tag_id = null;
+                  let existing_tag = await supabase
+                    .from('tags')
+                    .where({ tag: tag })
+                    .select('id')
+                    .then((value) => {
+                      // if there is no existing tag, insert one
+                      if ((existing_tag.length = 0)) {
+                        const { error } = await supabase
+                          .from('tags')
+                          .insert({ tag: data.content })
+                          .then((value) => {
+                            // grab ID of inserted tag
+                            existing_tag = await supabase
+                              .from('tags')
+                              .where({ tag: tag })
+                              .select('id')
+                              .then((value) => {
+                                tag_id = value;
+                                // create row in join table, define relationship
+                                const { error } = await supabase
+                                  .from('thought_tag')
+                                  .insert({
+                                    thought_id: thought_id.value,
+                                    tag_id: tag_id,
+                                  });
+                              });
+                          });
+                        console.log(error);
+                        // if there is an existing tag, define new relationship
+                      } else if (existing_tag.length > 0) {
+                        const { error } = await supabase
+                          .from('thought_tag')
+                          .insert({
+                            thought_id: thought_id.value,
+                            tag_id: existing_tag[0],
+                          });
+                      }
+                    });
+                });
+              } catch (error) {
+                console.error(error);
+              }
+            });
+        });
       console.log(error);
     } catch (error) {
       console.error(error);
