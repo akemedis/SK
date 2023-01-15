@@ -22,11 +22,11 @@
         <label
           for="message"
           class="block mb-4 text-lg font-medium text-blue-900 font-technica"
-          >Hey Seraj, what are you thinking? {{ fuck }}</label
+          >Hey Seraj, what are you thinking?</label
         >
         <textarea
           id="message"
-          v-model="content"
+          v-model="thisPost.content"
           rows="4"
           class="
             block
@@ -42,7 +42,7 @@
           placeholder="Can't wait to here it..."
         ></textarea>
         <input
-          v-model="tags"
+          v-model="thisPost.tags"
           type="text"
           class="
             mt-3
@@ -81,7 +81,7 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="post_thought(content, tags)"
+            @click="post_thought($supabase, thisPost.content, thisPost.tags)"
             type="button"
           >
             Post
@@ -101,12 +101,14 @@ definePageMeta({
 import { useDatabase } from '~/composables/useDatabase.js';
 import { useThoughtStore } from '@/store/thoughtStore';
 const { $supabase } = useNuxtApp();
-const { retrieve_thought_tag, format_date,format_tags, post_thought } = useDatabase();
-const thoughtStore = useThoughtStore()
-const thoughts = thoughtStore.thoughts.value
-
+const { retrieve_thought_tag, format_date, format_tags, post_thought } =
+  useDatabase();
+const thoughtStore = useThoughtStore();
+const thoughts = thoughtStore.thoughts.value;
+let thisPost = reactive({
+  content: '',
+  tags: '',
+});
 </script>
-
-
 
 <style></style>
