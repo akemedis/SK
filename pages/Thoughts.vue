@@ -3,7 +3,7 @@
     <thought
       v-for="thought in thoughts"
       :content="thought.content"
-      :date="format_date(thought.created_at)"
+      :dates="format_date(thought.created_at)"
       :tags="format_tags(thought.tags)"
     />
   </div>
@@ -18,10 +18,10 @@ definePageMeta({
 import { useDatabase } from '~/composables/useDatabase.js';
 import { useThoughtStore } from '@/store/thoughtStore';
 const { $supabase } = useNuxtApp();
-const { retrieve_thought_tag, format_date,format_tags, post_thought } = useDatabase();
-const thoughtStore = useThoughtStore()
-const thoughts = thoughtStore.thoughts.value
-
+const { retrieve_thought_tag, format_date, format_tags, post_thought } =
+  useDatabase();
+const thoughtStore = useThoughtStore();
+const thoughts = thoughtStore.thoughts.value;
 </script>
 
 <style></style>

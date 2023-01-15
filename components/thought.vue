@@ -44,5 +44,5 @@ const props = defineProps({
   dates: String,
   tags: Array,
 });
-console.log(props.tags[0]);
+console.log(props.tags[0], props.date);
 </script>
