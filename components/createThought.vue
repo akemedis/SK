@@ -81,7 +81,10 @@
         >
           <button
             class="decoration-red-500 duration-1000 p-1 hover:animate-pulse"
-            @click="post_thought($supabase, thisPost.content, thisPost.tags)"
+            @click="
+              post_thought($supabase, thisPost.content, thisPost.tags);
+              clearData();
+            "
             type="button"
           >
             Post
@@ -109,6 +112,10 @@ let thisPost = reactive({
   content: '',
   tags: '',
 });
+function clearData() {
+  thisPost.content = '';
+  thisPost.tags = '';
+}
 </script>
 
 <style></style>

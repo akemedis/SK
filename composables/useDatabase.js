@@ -12,70 +12,66 @@ export const useDatabase = (supabase) => {
     // inserting thought
     try {
       console.log('in level 1');
-      const { error } = await supabase
+      await supabase
         .from('thoughts')
         .insert({
           content: content,
         })
+        .select('id')
         .then(async (value) => {
-          console.log('in level 2', value);
-          thought_promise = await supabase
-            .from('thoughts')
-            .select('id')
-            .eq('content', content)
-            .then(async (value) => {
-              console.log('in level 3', value);
-              thought_id.value = value;
-              // dealing with tags
-              try {
-                console.log('in level 4');
-                for await (const tag of arrayTags) {
-                  console.log('this is tag', tag);
-                  // is tag already existing, if so grab ID
-                  let tag_id = null;
-                  let existing_tag = await supabase
-                    .from('tags')
-                    .select('id')
-                    .eq('tag', tag)
-                    .then(async (value) => {
-                      console.log('in level 5', value);
-                      // if there is no existing tag, insert one, then get ID of it
-                      if (existing_tag.length === 0) {
-                        const tag_id = await supabase
-                          .from('tags')
-                          .insert({ tag: tag })
-                          .returning('id')
-                          .then(async (value) => {
-                            console.log('in level 6', value);
-                            // create row in join table, define relationship
-                            const { error } = await supabase
-                              .from('thought_tag')
-                              .insert({
-                                thought_id: thought_id.value,
-                                tag_id: value,
-                              });
-                          });
-                        console.log(error);
-                        // if there is an existing tag, define new relationship
-                      } else if (existing_tag.length > 0) {
-                        console.log('in level 1v2');
+          console.log('in level 2', value.data[0].id);
+          thought_id.value = value.data[0].id;
+          // dealing with tags
+          try {
+            console.log('in level 4');
+            for await (const tag of arrayTags) {
+              console.log('this is tag', tag);
+              // is tag already existing, if so grab ID
+              await supabase
+                .from('tags')
+                .select('id')
+                .eq('tag', tag)
+                .then(async (value) => {
+                  console.log('in level 5', value.data);
+                  let existing_tag = value.data;
+                  // if there is no existing tag, insert one, then get ID of it
+                  if (existing_tag.length === 0) {
+                    await supabase
+                      .from('tags')
+                      .insert({ tag: tag })
+                      .select('id')
+                      .then(async (value) => {
+                        console.log('in level 6', value.data);
+                        // create row in join table, define relationship
                         const { error } = await supabase
                           .from('thought_tag')
                           .insert({
                             thought_id: thought_id.value,
-                            tag_id: existing_tag[0],
+                            tag_id: value.data[0].id,
                           });
-                      }
-                    });
-                }
-              } catch (error) {
-                console.error(error);
-              }
-            });
+                      });
+                    // if there is an existing tag, define new relationship
+                  } else if (existing_tag.length > 0) {
+                    console.log('in level 1v2', value.data[0].id);
+                    const { error } = await supabase
+                      .from('thought_tag')
+                      .insert({
+                        thought_id: thought_id.value,
+                        tag_id: existing_tag[0].id,
+                      });
+                  }
+                });
+            }
+          } catch (error) {
+            if (error) {
+              console.error(error);
+            }
+          }
         });
-      console.log(error);
     } catch (error) {
-      console.error(error);
+      if (error) {
+        console.error(error);
+      }
     }
   };
   const retrieve_thought_tag = async (supabase) => {
