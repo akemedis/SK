@@ -21,7 +21,7 @@ const { $supabase } = useNuxtApp();
 const { retrieve_thought_tag, format_date, format_tags, post_thought } =
   useDatabase();
 const thoughtStore = useThoughtStore();
-const thoughts = thoughtStore.thoughts.value;
+var thoughts = thoughtStore.thoughts.value;
 </script>
 
 <style></style>
