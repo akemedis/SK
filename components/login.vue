@@ -55,7 +55,7 @@
                 font-techinca
                 text-2xl text-white-100 text-transparent
               "
-              :steps="['', 200, random_greeting, 1000]"
+              :steps="['', 500, random_greeting, 1000]"
               :loop="1"
               :wrapper="'h2'"
             ></v-typical>
@@ -247,21 +247,11 @@ var password = '';
 
 // random greeting generation
 const greetings = [
-  'Hark! Thou art returned! Welcome back, fair traveler.',
-  'Avatar 2 was perfection.',
-  'All hail! The prodigal has returned. Welcome home.',
-  "Verily, 'tis good to see thee back amongst us. Welcome home, dear friend.",
-  'Prithee, let us raise a goblet to thy safe return. Welcome back, brave adventurer.',
-  'Hark! The wanderer has returned. Welcome back to thy rightful place.',
-  "Thou art back! 'Tis a pleasure to have thee amongst us once more. Welcome!",
-  'Welcome home, fair adventurer! Thy tales shall be heard with glee',
-  'The hearth fire burns bright with thy return. Welcome back dear friend',
-  'The kingdom rejoices, for the wanderer has returned. Welcome back',
-  'Behold! Our hero has returned. Welcome back to thy stronghold',
-  'Welcome home! Thy presence graces us once more',
-  "We've been awaiting thy return, welcome back dear traveler",
-  'Welcome back from thy journey, the banquet table is laid in thy honor',
-  "Thou hast returned! 'Tis good to see thee. Welcome back",
+  'Those who know that they are profound strive for clarity. Those who would like to seem profound to the crowd strive for obscurity. - Friedrich Nietzsche',
+  'Societal progress depends on the socially maladjusted - Martin Luther King',
+  'Reasonable people adapt themselves to the world, unreasonable people try to adapt the world to themselves, hence human progress depends on unreasonable people. - Vinod Khosla',
+  'If you naively believe you can do this, and you go try it, you will actually do more than say not trying it at all. Naivete is an important part of entrepreneurship. - Vinod Khosla',
+  'Learn 10 things to know 10,000. - Miyamoto Musashi',
 ];
 function set_greeting() {
   random_greeting = greetings[Math.floor(Math.random() * greetings.length)];
