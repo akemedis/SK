@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.6",
+    "@sidebase/nuxt-session": "^0.2.7",
     "pinia": "^2.0.28",
     "vue-typical": "^2.1.0"
   }

@@ -1,8 +1,10 @@
-export default defineEventHandler((event) => {
-  const query = getQuery(event)
+export default defineEventHandler(async (event) => {
+  // const query = getQuery(event)   // this is for GET requests only
+  const body = await readBody(event)  // this is for POST requests only
     return {
       status: 'working',
-      param_1: query.param_1, // extracting data from url
-      param_2: query.param_2
+      uid: body.uid, // extracting data from url
+      pwd: body.pwd,
+      order: body.order
     }
   })
