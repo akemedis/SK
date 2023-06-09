@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "description": "this schema describes the components of the reactor configuration and how they are connected to eachother",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string",
+            "description": "name of the reactor configuration"
+        },
+        "components": {
+            "type": "object",
+            "properties": {
+                
+            }
+        }
+    }
+}

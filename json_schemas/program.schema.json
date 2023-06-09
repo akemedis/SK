@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "description": "This schema defines a user generated reactor run in conjunction with a reactor configuration",
+    "reactor": {
+        "type": "string",
+        "description": "the ID of the reactor configuration used for this program"
+    },
+    "properties": {
+
+    }
+}

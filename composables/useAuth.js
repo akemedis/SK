@@ -8,11 +8,11 @@ export const useAuth = (supabase) => {
       } = await supabase.auth.getUser();
       const authStore = useAuthStore();
       authStore.user = user;
-      console.log(
-        user,
-        authStore.user,
-        JSON.parse(JSON.stringify(authStore.user)) // this is how you unpack the proxy
-      );
+      // console.log(
+      //   user,
+      //   authStore.user,
+      //   JSON.parse(JSON.stringify(authStore.user)) // this is how you unpack the proxy
+      // );
       return JSON.parse(JSON.stringify(authStore.user));
     } catch (error) {
       console.error('Error fetching user:', error);
@@ -24,7 +24,7 @@ export const useAuth = (supabase) => {
       const { error } = await supabase.auth.signOut();
       const authStore = useAuthStore();
       authStore.user = null;
-      console.log('logged out');
+      // console.log('logged out');
     } catch (error) {
       console.log('Error loggin out:', error);
     }
@@ -38,7 +38,7 @@ export const useAuth = (supabase) => {
       // updating store
       const authStore = useAuthStore();
       authStore.user = data;
-      console.log('Logged in user:', data, authStore.user);
+      // console.log('Logged in user:', data, authStore.user);
       return {
         stored_user: JSON.parse(JSON.stringify(authStore.user)),
         root_user: data,

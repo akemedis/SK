@@ -3,7 +3,9 @@ import { createClient } from '@supabase/supabase-js'
 export default defineEventHandler(async (event) => {
     // const query = getQuery(event)   // this is for GET requests only
     const body = await readBody(event)  // this is for POST requests only
-    var uid = body.uid // extracting data from url
+
+    // extracting data from POST request body
+    var uid = body.uid 
     var pwd = body.pwd
     var order = body.order
 
@@ -20,7 +22,7 @@ export default defineEventHandler(async (event) => {
           },
         });
     }
-
+    
     // create supabase client for temporary anon user
     const supabase = createClient(
         process.env.SUPABASE_URL, 
@@ -38,20 +40,21 @@ export default defineEventHandler(async (event) => {
         password: pwd
     }) 
 
-    const token = data.session.access_token // retrieve logged in users access token
-    const { data: {user} } = await supabase.auth.getUser(token)
-    const user_id = user.identities[0].id
+    // retrieve user data
+    const { data: session_data, error: session_error } = await supabase.auth.getSession()
+    const user_id = session_data.session.user.identities[0].id
 
-    let { data: reactor_runs, error: query_error } = await supabase
+    if (order == 'LED') {
+        let { data: reactor_runs, error: query_error } = await supabase
             .from('reactor_runs')
             .select('program')
             .eq('owner', user_id)
-
-    const { data: proof_session, error: proof_error } = await supabase.auth.getSession()
     
-    return {
-        order_response: reactor_runs,
-        user_id: user_id,
-        session: proof_session
+        return {
+            order_response: reactor_runs[0].program.LED,
+            user_id: user_id,
+        }
+    } else {
+        return 'You have no programs available for this order'
     }
 })

@@ -1,7 +1,7 @@
 export const useDatabase = (supabase) => {
   const fuck = 'fuck';
   const post_thought = async (supabase, content, tags) => {
-    console.log(tags);
+    // console.log(tags);
     let arrayTags = [];
     if (tags.includes(',')) {
       arrayTags = tags.split(',');
@@ -11,7 +11,7 @@ export const useDatabase = (supabase) => {
     const thought_id = ref(0);
     // inserting thought
     try {
-      console.log('in level 1');
+      // console.log('in level 1');
       await supabase
         .from('thoughts')
         .insert({
@@ -19,11 +19,11 @@ export const useDatabase = (supabase) => {
         })
         .select('id')
         .then(async (value) => {
-          console.log('in level 2', value.data[0].id);
+          // console.log('in level 2', value.data[0].id);
           thought_id.value = value.data[0].id;
           // dealing with tags
           try {
-            console.log('in level 4');
+            // console.log('in level 4');
             for await (const tag of arrayTags) {
               console.log('this is tag', tag);
               // is tag already existing, if so grab ID
@@ -32,7 +32,7 @@ export const useDatabase = (supabase) => {
                 .select('id')
                 .eq('tag', tag)
                 .then(async (value) => {
-                  console.log('in level 5', value.data);
+                  // console.log('in level 5', value.data);
                   let existing_tag = value.data;
                   // if there is no existing tag, insert one, then get ID of it
                   if (existing_tag.length === 0) {
@@ -41,7 +41,7 @@ export const useDatabase = (supabase) => {
                       .insert({ tag: tag })
                       .select('id')
                       .then(async (value) => {
-                        console.log('in level 6', value.data);
+                        // console.log('in level 6', value.data);
                         // create row in join table, define relationship
                         const { error } = await supabase
                           .from('thought_tag')
@@ -52,7 +52,7 @@ export const useDatabase = (supabase) => {
                       });
                     // if there is an existing tag, define new relationship
                   } else if (existing_tag.length > 0) {
-                    console.log('in level 1v2', value.data[0].id);
+                    // console.log('in level 1v2', value.data[0].id);
                     const { error } = await supabase
                       .from('thought_tag')
                       .insert({
@@ -76,13 +76,15 @@ export const useDatabase = (supabase) => {
   };
   const retrieve_thought_tag = async (supabase) => {
     try {
-      const { data, error } = await supabase.from('thoughts').select(`
+      const { data, error } = await supabase.from('thoughts')
+      .select(`
         content,
         created_at,
         tags (
           tag
-        )`);
-      console.log(data);
+        )`)
+        .order('id', {ascending: false});
+      // console.log(data);
       return data;
     } catch (error) {
       console.error(error);

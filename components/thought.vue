@@ -4,15 +4,13 @@
       flex
       self-center
       card
-      bg-base-300
-      rounded-box
       place-items-center
-      border-2 border-gray-200
+      md:border-2
       m-7
       p-1
-      rounded-2xl
-      max-w-prose
-      shadow-lg
+      md:rounded-2xl
+      md:max-w-prose
+      md:shadow-lg
       hover:scale-110
       hover:shadow-xl
       hover:m-9
@@ -24,10 +22,17 @@
       from-purple-300
       via-blue-500
       to-cyan-500
-      max-w-sm
+      sm:m-0
+      sm:p-0
+      sm:w-full
+      sm:bg-from-transparent
+      sm:via-transparent
+      sm:to-transparent
+      sm:bg-none
+      sm:py-2  
     "
   >
-    <div class="grid justify-items-center bg-gray-100 rounded-2xl p-4">
+    <div class="grid justify-items-center bg-gray-100 rounded-2xl p-4 sm:w-full sm:bg-transparent">
       <h1 class="font-roboto-500 font-medium text-lg">{{ content }}</h1>
       <h1 class="font-roboto-500 font-light p-1">{{ dates }}</h1>
       <div class="flex flex-wrap">
@@ -38,11 +43,10 @@
 </template>
 <script setup>
 import { defineProps } from 'vue';
-import VTypical from 'vue-typical';
 const props = defineProps({
   content: String,
   dates: String,
   tags: Array,
 });
-console.log(props.tags[0], props.date);
+// console.log(props.tags[0], props.date);
 </script>

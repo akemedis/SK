@@ -3,13 +3,16 @@
     <nav>
       <div
         class="
-          flex flex-wrap
+          flex
+          flex-wrap
+          justify-around
+          sm:justify-center
+          sm:pt-5
           bg-gradient-to-r
           from-blue-700
           via-cyan-600
           to-emerald-600
-          p-4
-          justify-center
+          p-2
           animate-gradient-x
         "
       >
@@ -19,7 +22,7 @@
             :steps="[
               '',
               200,
-              'FOR A BETTER FUTURE',
+              'F**K THE SYSTEM',
               500,
               'SERAJ KOTAGAMA',
               1000,
@@ -28,25 +31,30 @@
             :wrapper="'h2'"
           ></v-typical>
         </client-only>
-        <navbutton :title="'Thoughts'" :link="'/Thoughts'" />
-        <navbutton :title="'Essays'" :link="'/essays'" />
-        <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
-        <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
-        <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
-        <navbutton :title="'About'" :link="'/about'" />
-        <navbutton v-if="!authStore.user" :title="'Login'" :link="'/login'" />
-        <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" />
-        <navbutton
-          v-if="authStore.user"
-          :title="'Create Thoughts'"
-          :link="'/createThoughts'"
-        />
-        <navbutton
-          v-if="authStore.user"
-          :title="'Logout'"
-          :link="'/login'"
-          @click="log_out(authStore.supabase)"
-        />
+        <div class="flex flex-wrap justify-start w-1/2 sm:w-full sm:justify-center">
+          <navbutton :title="'Thoughts'" :link="'/Thoughts'" />
+          <navbutton :title="'Essays'" :link="'/essays'" />
+          <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
+          <navbutton :title="'Biotechnology'" :link="'Biotechnology'" />
+          <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
+          <navbutton :title="'About'" :link="'/about'" />
+          <navbutton v-if="!authStore.user" :title="'Login'" :link="'/login'" />
+          <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" />
+          <navbutton
+            v-if="authStore.user"
+            :title="'Create Thoughts'"
+            :link="'/createThoughts'"
+          />
+          <navbutton
+            v-if="authStore.user"
+            :title="'Logout'"
+            :link="'/login'"
+            @click="log_out(authStore.supabase)"
+          />
+        </div>
+        <div>
+
+        </div>
       </div>
     </nav>
   </header>
