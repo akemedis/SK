@@ -55,7 +55,7 @@
                 font-techinca
                 text-2xl text-white-100 text-transparent
               "
-              :steps="['', 500, random_greeting, 1000]"
+              :steps="['', 100, random_greeting, 200]"
               :loop="1"
               :wrapper="'h2'"
             ></v-typical>

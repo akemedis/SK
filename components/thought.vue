@@ -8,16 +8,18 @@
       md:border-2
       m-7
       p-1
+      
+      rounded-md
       md:rounded-2xl
       md:max-w-prose
       md:shadow-lg
-      hover:scale-110
-      hover:shadow-xl
-      hover:m-9
-      hover:scale-110
-      hover:shadow-xl
-      hover:m-9
-      duration-200
+      md:hover:scale-110
+      md:hover:shadow-xl
+      md:hover:m-9
+      md:hover:scale-110
+      md:hover:shadow-xl
+      md:hover:m-9
+      md:duration-200
       bg-gradient-to-r
       from-purple-300
       via-blue-500

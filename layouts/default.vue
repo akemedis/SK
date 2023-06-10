@@ -1,6 +1,7 @@
 <template>
   <div>
-    <customNav />
+    <!-- <customNav /> -->
+    <revisedNav />
     <slot />
   </div>
 </template>

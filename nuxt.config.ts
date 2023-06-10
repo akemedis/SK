@@ -1,6 +1,10 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/supabase', '@pinia/nuxt', '@sidebase/nuxt-session'],
+  modules: ['@nuxtjs/supabase', 
+  '@pinia/nuxt', 
+  '@sidebase/nuxt-session',
+  '@vueuse/nuxt'
+],
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
