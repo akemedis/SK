@@ -35,7 +35,7 @@
                 sm:mt-2
                 " 
                 id="icon_2"
-                @click="drop_menu">
+                @click="drop_menu(route_header, drop_logo)">
                     <img class="cursor-pointer transition duration-500 hover:scale-125 hover:drop-shadow-md" id="x-logo" src="../assets/images/X-navbar.png"/>
                 </div>
             </div>
@@ -67,41 +67,39 @@
 
 <script setup>
 import { useAuth } from '@/composables/useAuth';
-import { onMounted } from 'vue';
+import { onMounted, onBeforeMount, onBeforeUpdate } from 'vue';
 import { useScroll, useScrollLock } from '@vueuse/core'
 // import { useWindowScroll } from '@vueuse/core'
 import { watch } from '@vue/composition-api'
 
-
 const route = useRoute()
 
-// functions
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-function drop_menu() {
-        // drop_the_menu ? drop_the_menu = false : drop_the_menu = true
-        const route_header = document.getElementById('route_name')
-        const drop_logo = document.getElementById('x-logo')
-        if (drop_the_menu.value == false) {
-            drop_the_menu.value = true
-            route_header.classList.add('opacity-0')
-            drop_logo.classList.add('rotate-90')
-        } else {
-            drop_the_menu.value = false
-            route_header.classList.remove('opacity-0')
-            drop_logo.classList.remove('rotate-90')
-        }
-        // console.log(drop_the_menu)
+function drop_menu(route_header, drop_logo) {
+    if (drop_the_menu.value == false) {
+        drop_the_menu.value = true
+        route_header.classList.add('opacity-0')
+        drop_logo.classList.add('rotate-90')
+    } else {
+        drop_the_menu.value = false
+        route_header.classList.remove('opacity-0')
+        drop_logo.classList.remove('rotate-90')
     }
+}
 
 let drop_the_menu = ref(false)
-
+let route_header = ref('')
+let drop_logo = ref('')
 
 onMounted(() => {
     const nav_bar = document.getElementById('scrollBar')
     const icon_1 = document.getElementById('icon_1')
     const icon_2 = document.getElementById('icon_2')
+
+    route_header = document.getElementById('route_name')
+    drop_logo = document.getElementById('x-logo')
 
     function release_nav () {
         // changing opacity
@@ -129,6 +127,8 @@ onMounted(() => {
         icon_2.classList.add('scale-y-50')
         icon_2.classList.add('translate-x-[20%]')
         icon_2.classList.add('translate-y-[-50%]')
+
+        route_header.classList.remove('opacity-100')
     }
 
     function return_nav () {
@@ -152,7 +152,7 @@ onMounted(() => {
         icon_2.classList.remove('translate-x-[20%]')
         icon_2.classList.remove('translate-y-[-50%]')
 
-        route_header.classList.add('opacity-0')
+        route_header.classList.add('opacity-100')
     }
 
     var { x, y, isScrolling, arrivedState, directions } = useScroll(window)
