@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap justify-center pt-[200px]" :key=thoughtKey>
+  <div class="flex flex-wrap justify-center pt-[200px] sm:pt-[125px]" :key=thoughtKey>
     <thought
       v-for="thought in thoughts"
       :content="thought.content"

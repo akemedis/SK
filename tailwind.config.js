@@ -16,6 +16,13 @@ module.exports = {
         signature: "'Akronim', serif",
         anu: "'anurati', sans",
         roboto: "'roboto', sans",
+        garamond_bold: "'ComorantGaramond-Bold', serif",
+        garamond_italic: "'ComorantGaramond-Italic', serif"
+      },
+      colors: {
+        'heading_beige': '#F4BC96',
+        'subtitle': '#630B22',
+        'drop_down': '#15273A'
       },
       animation: {
         'gradient-x': 'gradient-x 10s ease infinite',

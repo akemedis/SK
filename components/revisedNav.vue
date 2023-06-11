@@ -1,28 +1,66 @@
 <template>
-    <header class=" w-full">
+    <header class=" flex w-full">
         <nav class="">
-            <div class="flex h-[20%] max-h-[175px] min-h-[175px] fixed p-2 left-[8%] z-10 transition duration-500" id="icon_1">
-                <img src="../assets/images/logo.png"/>
-            </div>
-            <div class="flex h-[10%] max-h-[50px] min-h-[50px] fixed right-[10%] top-[80px] z-10 transition duration-500" id="icon_2">
-                <img src="../assets/images/X-navbar.png"/>
+            <div class="
+            flex
+            w-full
+            z-20
+            fixed
+            h-[200px]
+            sm:h-[125px]
+            justify-between
+            items-center
+            px-5
+            max-w-[1000px]
+            mx-auto
+            inset-x-0 
+            ">
+                <div class="
+                flex 
+                h-[75%] 
+                z-20 
+                transition 
+                duration-500
+                " 
+                id="icon_1">
+                    <img src="../assets/images/logo.png"/>
+                </div>
+                <div class="flex 
+                h-[20%] 
+                z-20 
+                transition 
+                duration-500
+                px-5
+                mt-5
+                sm:mt-2
+                " 
+                id="icon_2"
+                @click="drop_menu">
+                    <img class="cursor-pointer transition duration-500 hover:scale-125 hover:drop-shadow-md" id="x-logo" src="../assets/images/X-navbar.png"/>
+                </div>
             </div>
             <div
         class="
             flex
             w-full
-            z-0
+            z-10
             bg-gradient-to-r from-gray-900 to-red-900
             transition
             duration-500
             h-[200px]
+            sm:h-[125px]
             fixed
+            justify-center
+            items-center
             "
             id="scrollBar"
         >
-            <h1 class="z=10 left-[50%]">Yeeett</h1>
+            <h1 class="z=10 left-[50%] font-garamond_bold text-[200%] text-heading_beige transition duration-500" id="route_name">{{ route.name }}</h1>
         </div>
         </nav>
+        <transition>
+            <navDrop v-if="drop_the_menu == true" />
+        </transition>
     </header>
 </template>
 
@@ -30,62 +68,120 @@
 <script setup>
 import { useAuth } from '@/composables/useAuth';
 import { onMounted } from 'vue';
-import { useScroll } from '@vueuse/core'
+import { useScroll, useScrollLock } from '@vueuse/core'
 // import { useWindowScroll } from '@vueuse/core'
 import { watch } from '@vue/composition-api'
 
+
+const route = useRoute()
+
+// functions
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+function drop_menu() {
+        // drop_the_menu ? drop_the_menu = false : drop_the_menu = true
+        const route_header = document.getElementById('route_name')
+        const drop_logo = document.getElementById('x-logo')
+        if (drop_the_menu.value == false) {
+            drop_the_menu.value = true
+            route_header.classList.add('opacity-0')
+            drop_logo.classList.add('rotate-90')
+        } else {
+            drop_the_menu.value = false
+            route_header.classList.remove('opacity-0')
+            drop_logo.classList.remove('rotate-90')
+        }
+        // console.log(drop_the_menu)
+    }
+
+let drop_the_menu = ref(false)
+
 
 onMounted(() => {
     const nav_bar = document.getElementById('scrollBar')
     const icon_1 = document.getElementById('icon_1')
     const icon_2 = document.getElementById('icon_2')
 
+    function release_nav () {
+        // changing opacity
+        nav_bar.classList.add('opacity-0')
+        nav_bar.classList.remove('opacity-100')
+        icon_2.classList.remove('opacity-100')
+        icon_2.classList.add('opacity-0')
+        icon_1.classList.remove('opacity-100')
+        icon_1.classList.add('opacity-25')
+
+        // logo animation on scroll down
+        icon_1.classList.remove('scale-x-100')
+        icon_1.classList.remove('scale-y-100')
+        icon_1.classList.remove('translate-x-[5%]')
+        icon_1.classList.add('scale-x-50')
+        icon_1.classList.add('scale-y-50')
+        icon_1.classList.add('translate-x-[-20%]')
+        icon_1.classList.add('translate-y-[-12%]')
+
+        // icon animation on scroll down
+        icon_2.classList.remove('scale-x-100')
+        icon_2.classList.remove('scale-y-100')
+        icon_2.classList.remove('translate-x-[5%]')
+        icon_2.classList.add('scale-x-50')
+        icon_2.classList.add('scale-y-50')
+        icon_2.classList.add('translate-x-[20%]')
+        icon_2.classList.add('translate-y-[-50%]')
+    }
+
+    function return_nav () {
+        // changing opacity scroll-up
+        nav_bar.classList.add('opacity-100')
+        nav_bar.classList.remove('opacity-0')
+        icon_2.classList.add('opacity-100')
+        icon_2.classList.remove('opacity-0')
+        icon_1.classList.add('opacity-100')
+        icon_1.classList.remove('opacity-25')
+
+        // logo animation on scroll up
+        icon_1.classList.remove('scale-x-50')
+        icon_1.classList.remove('scale-y-50')
+        icon_1.classList.remove('translate-x-[-20%]')
+        icon_1.classList.remove('translate-y-[-12%]')
+
+        // icon animation on scroll up
+        icon_2.classList.remove('scale-x-50')
+        icon_2.classList.remove('scale-y-50')
+        icon_2.classList.remove('translate-x-[20%]')
+        icon_2.classList.remove('translate-y-[-50%]')
+
+        route_header.classList.add('opacity-0')
+    }
+
     var { x, y, isScrolling, arrivedState, directions } = useScroll(window)
     watch(y, () => {
-        // console.log(y, directions)
-        if (directions.bottom == true) {
-            // nav_bar.classList.add('opacity-25')
-            nav_bar.classList.add('opacity-0')
-            nav_bar.classList.remove('opacity-100')
-            icon_1.classList.remove('scale-x-100')
-            icon_1.classList.remove('scale-y-100')
-            icon_1.classList.remove('translate-x-[5%]')
-            icon_1.classList.add('scale-x-50')
-            icon_1.classList.add('scale-y-50')
-            icon_1.classList.add('translate-x-[-20%]')
-            icon_1.classList.add('translate-y-[-12%]')
-
-            icon_2.classList.remove('scale-x-100')
-            icon_2.classList.remove('scale-y-100')
-            icon_2.classList.remove('translate-x-[5%]')
-            icon_2.classList.add('scale-x-50')
-            icon_2.classList.add('scale-y-50')
-            icon_2.classList.add('translate-x-[20%]')
-            icon_2.classList.add('translate-y-[-50%]')
-            // await sleep(1000)
+        
+        // console.log(y, directions, arrivedState)
+        if (directions.bottom == true && drop_the_menu.value == false) {
+            release_nav()
         }
-        if (directions.bottom == false) {
-            nav_bar.classList.add('opacity-100')
-            nav_bar.classList.remove('opacity-0')
-            icon_1.classList.remove('scale-x-50')
-            icon_1.classList.remove('scale-y-50')
-            icon_1.classList.remove('translate-x-[-20%]')
-            icon_1.classList.remove('translate-y-[-12%]')
-
-            icon_2.classList.remove('scale-x-50')
-            icon_2.classList.remove('scale-y-50')
-            icon_2.classList.remove('translate-x-[20%]')
-            icon_2.classList.remove('translate-y-[-50%]')
-            // await sleep(1000)
+        if (directions.bottom == false && drop_the_menu.value == false) {
+            return_nav()
         }
     })
-
+    // watch(drop_the_menu, () => {
+    //     console.log('changed')
+    // })
 })
 
 </script>
 <style>
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.35s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 
 </style>
