@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <!-- <customNav /> -->
+  <div class="">
     <revisedNav />
-    <slot />
+    <slot/>
+    <footnote />
   </div>
 </template>
 

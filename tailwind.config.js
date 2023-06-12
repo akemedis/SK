@@ -17,12 +17,16 @@ module.exports = {
         anu: "'anurati', sans",
         roboto: "'roboto', sans",
         garamond_bold: "'ComorantGaramond-Bold', serif",
-        garamond_italic: "'ComorantGaramond-Italic', serif"
+        garamond_italic: "'ComorantGaramond-Italic', serif",
+        qwitcher_regular: "'QwitcherGrypen-Regular', serif",
+        italiano: "Italianno-Regular",
       },
       colors: {
         'heading_beige': '#F4BC96',
         'subtitle': '#630B22',
-        'drop_down': '#15273A'
+        'drop_down': '#15273A',
+        'italic_sub': '#1A5C83',
+        'header_blue': '#144562'
       },
       animation: {
         'gradient-x': 'gradient-x 10s ease infinite',

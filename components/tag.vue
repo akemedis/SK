@@ -1,6 +1,6 @@
 <template>
   <div class="opacity-30 z-0 relative">
-    <p class="font-serif italic font-bold text-subtitle">#{{ tag }}</p>
+    <p class=" font-qwitcher_regular italic text-xl text-drop_down">#{{ tag }}</p>
   </div>
 </template>
 

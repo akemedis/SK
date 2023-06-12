@@ -81,10 +81,12 @@ function drop_menu(route_header, drop_logo) {
     if (drop_the_menu.value == false) {
         drop_the_menu.value = true
         route_header.classList.add('opacity-0')
+        route_header.classList.remove('opacity-100')
         drop_logo.classList.add('rotate-90')
     } else {
         drop_the_menu.value = false
         route_header.classList.remove('opacity-0')
+        route_header.classList.add('opacity-100')
         drop_logo.classList.remove('rotate-90')
     }
 }
@@ -92,6 +94,13 @@ function drop_menu(route_header, drop_logo) {
 let drop_the_menu = ref(false)
 let route_header = ref('')
 let drop_logo = ref('')
+
+watch ( () => route.name, () => {
+    drop_the_menu.value = false
+    route_header.classList.remove('opacity-0')
+    route_header.classList.add('opacity-100')
+    drop_logo.classList.remove('rotate-90')
+})
 
 onMounted(() => {
     const nav_bar = document.getElementById('scrollBar')
@@ -166,14 +175,12 @@ onMounted(() => {
             return_nav()
         }
     })
-    // watch(drop_the_menu, () => {
-    //     console.log('changed')
-    // })
 })
+
 
 </script>
 <style>
-/* we will explain what these classes do next! */
+/* These define transitions for conditionally renderd dom elements */
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.35s ease;
@@ -184,4 +191,8 @@ onMounted(() => {
   opacity: 0;
 }
 
+#route_name {
+    animation: route_header_slide 1s forwards;
+    text-transform: capitalize;
+}
 </style>
