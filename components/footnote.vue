@@ -8,7 +8,7 @@
     bg-gradient-to-r from-gray-900 to-red-900
     transition
     duration-500
-    z-20
+    z-0
     static
     bottom-[0px]
     ">

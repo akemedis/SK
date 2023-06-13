@@ -3,8 +3,10 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase', 
   '@pinia/nuxt', 
   '@sidebase/nuxt-session',
-  '@vueuse/nuxt'
-],
+  '@vueuse/nuxt',
+  '@nuxtjs/google-fonts'
+  ],
+
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
@@ -18,4 +20,10 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  googleFonts: {
+    families: {
+      'Gamja Flower': true,
+    },
+    display: 'swap' 
+  }
 });

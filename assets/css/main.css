@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Akronim&family=Roboto:ital,wght@0,400;0,500;1,400;1,500&family=Ubuntu:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
+
 @font-face {
   font-family: 'anurati';
   src: url('../fonts/anurati.otf');
 }
+
+@font-face {
+  font-family: 'creatures';
+  src: local('creatures')  url('../fonts/GamjaFlower-Regular.ttf') format('ttf');
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
