@@ -19,7 +19,11 @@ module.exports = {
         garamond_bold: "'ComorantGaramond-Bold', serif",
         garamond_italic: "'ComorantGaramond-Italic', serif",
         qwitcher_regular: "'QwitcherGrypen-Regular', serif",
-        creatures: ["Gamja Flower"]
+        creatures: ["Gamja Flower"],
+        garamond: ["EB Garamond", 'serif'],
+        cormorant: ["Cormorant", 'serif'],
+        alegreya: ["Alegreya", 'serif'],
+        cardo: ["Cardo"]
       },
       colors: {
         'heading_beige': '#F4BC96',

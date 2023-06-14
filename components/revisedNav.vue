@@ -44,7 +44,7 @@
             flex
             w-full
             z-10
-            bg-gradient-to-r from-gray-900 to-red-900
+            bg-gradient-to-r from-drop_down via-drop_down to-red-900
             transition
             duration-500
             h-[200px]
@@ -55,7 +55,7 @@
             "
             id="scrollBar"
         >
-            <h1 class="z=10 left-[50%] font-garamond_bold text-[200%] text-heading_beige transition duration-500" id="route_name">{{ route.name }}</h1>
+            <h1 class="z=10 left-[50%] font-alegreya text-[200%] text-heading_beige transition duration-500" id="route_name">{{ name }}</h1>
         </div>
         </nav>
         <transition>
@@ -73,6 +73,10 @@ import { useScroll, useScrollLock } from '@vueuse/core'
 import { watch } from '@vue/composition-api'
 
 const route = useRoute()
+let name = ref(route.name)
+if (name.value.includes('writing') || route.name.includes('writing')) {
+    name.value = 'Writings'
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -96,10 +100,15 @@ let route_header = ref('')
 let drop_logo = ref('')
 
 watch ( () => route.name, () => {
+    name.value = route.name
+    console.log(name.value)
     drop_the_menu.value = false
     route_header.classList.remove('opacity-0')
     route_header.classList.add('opacity-100')
     drop_logo.classList.remove('rotate-90')
+    if (name.value.includes('writing') || route.name.includes('writing')) {
+        name.value = 'Writings'
+    }
 })
 
 onMounted(() => {
@@ -117,7 +126,7 @@ onMounted(() => {
         icon_2.classList.remove('opacity-100')
         icon_2.classList.add('opacity-0')
         icon_1.classList.remove('opacity-100')
-        icon_1.classList.add('opacity-25')
+        icon_1.classList.add('opacity-50')
 
         // logo animation on scroll down
         icon_1.classList.remove('scale-x-100')
@@ -147,7 +156,7 @@ onMounted(() => {
         icon_2.classList.add('opacity-100')
         icon_2.classList.remove('opacity-0')
         icon_1.classList.add('opacity-100')
-        icon_1.classList.remove('opacity-25')
+        icon_1.classList.remove('opacity-50')
 
         // logo animation on scroll up
         icon_1.classList.remove('scale-x-50')

@@ -25,8 +25,8 @@
       sm:py-2  
     "
   >
-    <div class="grid justify-items-center bg-transparent rounded-2xl p-4 sm:w-full sm:bg-transparent">
-      <h1 class="font-serif text-lg">{{ content }}</h1>
+    <div class="flex flex-col bg-transparent rounded-2xl p-4 sm:w-full sm:bg-transparent">
+      <h1 class="font-alegreya text-lg">{{ content }}</h1>
       <div class="flex flex-wrap">
         <tag v-for="tag in tags" :tag="tag" />
       </div>

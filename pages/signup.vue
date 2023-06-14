@@ -22,7 +22,7 @@
         "
         id="sign"
       >
-        <div class="flex justify-center max-h-[125px] m-5 sm:mt-[125px] mt-[250px]">
+        <div class="flex justify-center max-h-[125px] m-5 sm:mt-[150px] mt-[250px]">
           <div class="flex w-1/4 xs:w-1/8 mr-5">
             <img src="../assets/images/frog_icon.png" alt="">
           </div>
@@ -250,8 +250,4 @@ function sign_up(name, email, password) {
   fill: #2563eb;
 }
 
-/* #back {
-  background-image: url(../assets/images/fish_concept.png);
-  background-size: cover;
-} */
 </style>

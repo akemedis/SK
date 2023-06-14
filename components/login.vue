@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center min-h-[100vh]">
-    <div class="flex mt-[250px]">
+    <div class="flex mt-[250px] sm:mt-[150px]">
       <div
         class="
           flex
@@ -25,7 +25,7 @@
           "
           id="sign"
         >
-          <div class="flex justify-around max-h-[125px] m-5 sm:mt-[125px]">
+          <div class="flex justify-around max-h-[125px] m-5">
             <div class="flex sm:w-1/4 w-1/4">
               <img src="../assets/images/frog_icon.png" alt="">
             </div>

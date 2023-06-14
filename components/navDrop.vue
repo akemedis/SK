@@ -7,6 +7,7 @@
     bg-drop_down
     font-garamond_bold
     pl-[10%]
+    z-10
     ">
         <div class="
         flex 
@@ -18,13 +19,13 @@
         sm:mt-[150px]
         "
         id="button_div">
-          <div class="flex justify-between flex-col h-[500px] min-h-[300px] border-solid border-3">
+          <div class="flex justify-between flex-col h-[500px] min-h-[300px] border-solid border-3 font-alegreya">
               <navbutton :title="'About'" :link="'/about'" class="text-[200%] text-heading_beige nb opacity-0" id="b1" />
               <navbutton :title="'Reactors'" :link="'/reactors'" class="text-[200%] text-heading_beige nb opacity-0" id="b2" />
               <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
-              <navbutton :title="'Thoughts'" :link="'Thoughts'" class="text-[200%] text-heading_beige nb opacity-0" id="b3"/>
+              <navbutton :title="'Thoughts'" :link="'/Thoughts'" class="text-[200%] text-heading_beige nb opacity-0" id="b3"/>
               <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
-              <navbutton :title="'Writings'" :link="'/writings'" class="text-[200%] text-heading_beige nb opacity-0" id="b4" />
+              <navbutton :title="'Writings'" :link="'/writings/post_1'" class="text-[200%] text-heading_beige nb opacity-0" id="b4" />
               <navbutton v-if="!authStore.user" :title="'Login'" :link="'/login'" class="text-[200%] text-heading_beige nb opacity-0" id="b5" />
               <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" class="text-[200%] text-heading_beige nb opacity-0" id="b6" />
               <navbutton

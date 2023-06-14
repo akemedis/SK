@@ -5,7 +5,7 @@
     items-center  
     h-[100px]
     w-full 
-    bg-gradient-to-r from-gray-900 to-red-900
+    bg-gradient-to-r from-drop_down via-drop_down to-red-900
     transition
     duration-500
     z-0

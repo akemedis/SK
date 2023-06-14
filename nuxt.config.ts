@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   '@pinia/nuxt', 
   '@sidebase/nuxt-session',
   '@vueuse/nuxt',
-  '@nuxtjs/google-fonts'
+  '@nuxtjs/google-fonts',
+  '@nuxt/content'
   ],
 
   css: ['~/assets/css/main.css'],
@@ -23,6 +24,22 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       'Gamja Flower': true,
+      'EB Garamond': {
+        wght: [400, 500, 600],
+        ital: [100]
+      },
+      'Cormorant': {
+        wght: [400, 500, 600],
+        ital: [100]
+      },
+      'Alegreya': {
+        wght: [400, 500, 600],
+        ital: [400]
+      },
+      'Cardo': {
+        wght: [400],
+        ital: [400]
+      }
     },
     display: 'swap' 
   }
