@@ -25,7 +25,7 @@
               <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
               <navbutton :title="'Thoughts'" :link="'/Thoughts'" class="text-[200%] text-heading_beige nb opacity-0" id="b3"/>
               <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
-              <navbutton :title="'Writings'" :link="'/writings/post_1'" class="text-[200%] text-heading_beige nb opacity-0" id="b4" />
+              <navbutton :title="'Writings'" :link="'/writings'" class="text-[200%] text-heading_beige nb opacity-0" id="b4" />
               <navbutton v-if="!authStore.user" :title="'Login'" :link="'/login'" class="text-[200%] text-heading_beige nb opacity-0" id="b5" />
               <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" class="text-[200%] text-heading_beige nb opacity-0" id="b6" />
               <navbutton

@@ -1,16 +1,7 @@
----
-title: 'Glycolate shows promise for the next generation of green polymers'
-description: 'test description for writing 1'
-author: 'Seraj Kotagama'
-date: '14th of June, 2023'
-topic: 'Politics'
----
-
-
 
 ::heading
 ---
-title: 'Glycolate shows promise for the next generation of green polymers'
+title: '    FUCK YEAH CUNT'
 description: 'test description for writing 1'
 author: 'Seraj Kotagama'
 date: '14th of June, 2023'
@@ -37,18 +28,3 @@ Frog caption here
 Poly(lactic-co-glycolic) acid (PLGA) is a promising and overlooked thermoplastic that possesses exceptional biodegradability and gas barrier properties, alongside excellent thermomechanical properties that take the best from polyglycolic acid and polylactic acid (Murcia Valderrama, van Putten et al. 2020, Samantaray, Little et al. 2020, Wang, Murcia Valderrama et al. 2022). PLGA is a highly tunable copolymer with regards to its tensile strength, elasticity, gas barrier properties, and biodegradability. These properties can be tuned by dynamic regulation of the monomer pathways that modulate the composition of glycolate-glycolate (G-G), glycolate-lactate (G-L), and lactate-lactate (L-L) ester bonds within the PLGA copolymer. G-G ester bonds are mechanically strong, stiff, and easily hydrolysable in comparison to L-L ester bonds that possess less strength and biodegradability, but are more elastic, whilst G-L bonds strike a balance between the two (Washington, Swiner et al. 2017, Murcia Valderrama, van Putten et al. 2020). Further regarding ecotoxicity, the fundamental monomers and oligomers comprising PLGA have been demonstrated either inert or positively correlated to plant growth in several plant species in a concentration dependant manner (Kinnersley, Scott et al. 1990, Kinnersley 1993, Abbasi, Lazarovits et al. 2009). PLGA is currently used in the biomedical industry where it is synthesized through a costly and risky ring opening polymerisation (ROP) process using metal catalysts with high-energy inputs (Gentile, Chiono et al. 2014, Pardeshi, Nikam et al. 2023). Fortunately, PLGA has been biosynthesised in E. coli with some success regarding its molecular weight and thermal properties. However, the PLGA films mechanical properties were not tested, and the yields within the chassis were not techno economically appropriate to produce commodity plastics. 
 
 ::
-<!-- ![my image](/img/frog_icon.png -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
