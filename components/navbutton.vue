@@ -3,18 +3,16 @@
     v-bind:to="link"
     class="
       text-gray-300
-      hover:underline
-      hover:underline-offset-3
-      hover:decoration-4
-      hover:decoration-green-500
-      hover:text-white
       block
       px-3
       py-2
       rounded-md
       text-base
       font-medium
-      move
+      transition
+      duration-500
+      hover:text-white
+      hover:scale-110
     "
     >{{ title }}</NuxtLink
   >

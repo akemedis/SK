@@ -3,3 +3,13 @@
         <slot />
     </div>
 </template>
+
+<script setup>
+definePageMeta({
+  pageTransition: {
+    name: 'bounce',
+    mode: 'out-in' // default
+  }
+})
+
+</script>

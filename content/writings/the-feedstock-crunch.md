@@ -1,10 +1,21 @@
-
-::heading
 ---
-title: '    FUCK YEAH CUNT'
+title: 'There will be sufficient land for sugarcane to support a full replacement of traditional meat and dairy with their cell-based counterparts'
 description: 'test description for writing 1'
 author: 'Seraj Kotagama'
 date: '14th of June, 2023'
+topic: 'Politics'
+path: '/the-feedstock-crunch'
+tag: opinion
+---
+
+
+
+::heading
+---
+title: 'There will be sufficient land for sugarcane to support a full replacement of traditional meat and dairy with their cell-based counterparts'
+description: 'test description for writing 1'
+author: 'Seraj Kotagama'
+date: '5th of May, 2023'
 topic: 'Politics'
 ---
 

@@ -20,25 +20,25 @@
         "
         id="button_div">
           <div class="flex justify-between flex-col h-[500px] min-h-[300px] border-solid border-3 font-alegreya">
-              <navbutton :title="'About'" :link="'/about'" class="text-[200%] text-heading_beige nb opacity-0" id="b1" />
-              <navbutton :title="'Reactors'" :link="'/reactors'" class="text-[200%] text-heading_beige nb opacity-0" id="b2" />
+              <navbutton :title="'About'" :link="'/about'" class="text-[200%] nb opacity-0 hover:scale-125" id="b1" />
+              <!-- <navbutton :title="'Reactors'" :link="'/reactors'" class="text-[200%] text-heading_beige nb opacity-0" id="b2" /> -->
               <!-- <navbutton :title="'Visual Diary'" :link="'VisualDiary'" /> -->
-              <navbutton :title="'Thoughts'" :link="'/Thoughts'" class="text-[200%] text-heading_beige nb opacity-0" id="b3"/>
+              <navbutton :title="'Thoughts'" :link="'/Thoughts'" class="text-[200%] nb opacity-0" id="b3"/>
               <!-- <navbutton :title="'Consultancy'" :link="'Consultancy'" /> -->
-              <navbutton :title="'Writings'" :link="'/writings'" class="text-[200%] text-heading_beige nb opacity-0" id="b4" />
-              <navbutton v-if="!authStore.user" :title="'Login'" :link="'/login'" class="text-[200%] text-heading_beige nb opacity-0" id="b5" />
-              <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" class="text-[200%] text-heading_beige nb opacity-0" id="b6" />
+              <navbutton @click="$emit('update', false)" :title="'Writings'" :link="'/writings'" class="text-[200%] nb opacity-0" id="b4" />
+              <navbutton v-if="!authStore.user" :title="'Login'" :link="'/login'" class="text-[200%] nb opacity-0" id="b5" />
+              <navbutton v-if="!authStore.user" :title="'Signup'" :link="'/signup'" class="text-[200%] nb opacity-0" id="b6" />
               <navbutton
               v-if="authStore.user"
               :title="'Create Thoughts'"
               :link="'/createThoughts'"
-              class="text-[200%] text-heading_beige"
+              class="text-[200%]"
               />
               <navbutton
               v-if="authStore.user"
               :title="'Logout'"
               :link="'/login'"
-              class="text-[200%] text-heading_beige"
+              class="text-[200%]"
               @click="log_out(authStore.supabase)"
               />
           </div>

@@ -6,6 +6,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   const url = config.SUPABASE_URL;
   const key = config.SUPABASE_KEY;
   const client = createClient(url, key);
-  console.log('this is the plugin speaking, client created', client);
+  // console.log('this is the plugin speaking, client created', client);
   nuxtApp.provide('supabase', client);
 });

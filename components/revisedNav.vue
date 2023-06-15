@@ -59,7 +59,7 @@
         </div>
         </nav>
         <transition>
-            <navDrop v-if="drop_the_menu == true" />
+            <navDrop v-if="drop_the_menu == true" v-on:update="drop_the_menu = false" />
         </transition>
     </header>
 </template>
@@ -99,7 +99,7 @@ let drop_the_menu = ref(false)
 let route_header = ref('')
 let drop_logo = ref('')
 
-watch ( () => route.name, () => {
+watch ( () => [route.name, drop_the_menu], () => {
     name.value = route.name
     console.log(name.value)
     drop_the_menu.value = false
